@@ -165,13 +165,14 @@ footer p {
 .registro {
     width: 40%;
     margin: 5% auto 0 auto;
-    border: 2px rgba(0,0,0,.3) solid;
+    border: 2px rgba(0,0,0,.2) solid;
     border-radius: 4px;
     padding: 3%;
 }
 #r-title {
     margin-top: 5%;
     font-size: 2.3em;
+    color: rgba(0,0,0,.7);
     display: block;
     text-align: center;
 }
@@ -179,16 +180,23 @@ footer p {
     display: block;
     text-align: center;
     font-size: 2em;
+    color: rgba(0,0,0,.6);
     font-weight: 600;
 }
 .formulario {
     margin: 3%;
+}
+.formulario a {
+    display: block;
+    text-align: center;
+    margin: 4% 0 2% 0;
 }
 .formulario label, input {
     padding: 2%;
 }
 .formulario label {
     font-size: 1.3em;
+    color: rgba(0,0,0,.6);
 }
 .formulario input[type=text], .formulario input[type=password] {
     width: 100%;
@@ -200,7 +208,7 @@ footer p {
     width: 100%;
     margin-top: 3%;
     background-color: transparent;
-    border: 2px rgba(0,0,0,.3) solid;
+    border: 2px rgba(0,0,0,.2) solid;
     border-radius: 2px;
     color: gray;
     font-size: 1.2em;
