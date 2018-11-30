@@ -1,0 +1,215 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+a {
+    text-decoration: none;
+}a:hover {
+    text-decoration: none;
+}
+#nav-menu {
+    height: 62px;
+}
+#menu {
+    float: right;
+}
+#nav-logo {
+    width: 15%;
+    display: inline-block;
+    padding: 20px;
+}
+#nav-logo img {
+    width: 100%;
+}
+#menu img {
+
+}
+#menu ul {
+    display: flex;
+    list-style: none;
+}
+#menu li a{
+    display: block;
+    padding: 20px;
+    color: black;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all .5s;
+}
+#menu li a:hover{
+    color: white;
+    background-color: rgb(100, 100, 100);
+}
+#banner{
+    height: 400px;
+    background-image: url('../images/banner1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 2%;
+}
+#categorias {
+    width: 100%;
+}
+#categorias span {
+    display: block;
+    font-size: 1.6em;
+    font-weight: 600;
+}
+#categorias input {
+    width: 100%;
+    border: 1px rgba(0,0,0,.2) solid;
+    border-radius: 3%; 
+    padding: 3%;
+    margin-top: 3%;
+}
+#categorias button {
+    width: 100%;
+    padding: 3%;
+    border: none;
+    color: white;
+    background-color: rgba(0,0,0,.4);
+    transition: all .5s;
+    margin-bottom: 3%;
+}
+#categorias button:hover {
+    background-color: rgba(0,0,0,.6);
+}
+#categorias ul {
+    display: block;
+    list-style: none;
+    padding: 0;
+}
+#categorias a {
+    display: block;
+    color: black;
+    font-size: 1.2em;
+    padding: 5% 2% 5% 2%;
+}
+#categorias a:hover {
+    color: grey;
+}
+.post {
+    position: relative;
+    z-index: 10;
+    margin: 2% 0 2% 0;
+    height: 400px;
+    background-image: url('../images/producto.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.post-info {
+    padding: 5%;
+    position: absolute;
+    background-color: rgba(0,0,0,.4);
+    color: white;
+    bottom: 0;
+    transition: all .5s;
+}
+.post:hover .post-info {
+    background-color: rgba(0,0,0,.8);
+}
+.post-info span {
+    color: white;
+    font-size: 1.3em;
+}
+.post-info span:nth-child(2) {
+    float: right;
+    color: white;
+}
+.post-info p {
+    color: white;
+    padding: 1%;
+}
+.post-info a {
+    float: right;
+    border-bottom-right-radius: 25%;
+    border-bottom-left-radius: 5%;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    padding: 3%;
+    color: white;
+    border: 2px white solid;
+    transition: all .5s;
+}
+.post-info a:hover {
+    background-color: rgba(250,0,0,0.6);
+}
+.f-menu {
+    width: 100%;
+    margin-top: 5%;
+}
+.f-menu ul {
+    display: flex;
+    list-style: none;
+}
+.f-menu ul li {
+    margin: 1%;
+    float: left;
+}
+.f-menu li a {
+    color: rgba(0,0,0,.7);
+    display: block;
+    text-align: center;
+}
+footer p {
+    text-align: center;
+    color: grey;
+}
+
+/* REGISTRO CSS */
+
+.registro {
+    width: 40%;
+    margin: 5% auto 0 auto;
+    border: 2px rgba(0,0,0,.3) solid;
+    border-radius: 4px;
+    padding: 3%;
+}
+#r-title {
+    margin-top: 5%;
+    font-size: 2.3em;
+    display: block;
+    text-align: center;
+}
+.registro span {
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+}
+.formulario {
+    margin: 3%;
+}
+.formulario label, input {
+    padding: 2%;
+}
+.formulario label {
+    font-size: 1.3em;
+}
+.formulario input[type=text], .formulario input[type=password] {
+    width: 100%;
+    display: block;
+    border: 1px rgba(0,0,0,.2) solid;
+    border-radius: 3px;
+}
+.formulario input[type=submit] {
+    width: 100%;
+    margin-top: 3%;
+    background-color: transparent;
+    border: 2px rgba(0,0,0,.3) solid;
+    border-radius: 2px;
+    color: gray;
+    font-size: 1.2em;
+    transition: all .5s;
+}
+.formulario input[type=submit]:hover {
+    background-color: rgba(250,0,0,.6);
+    color: white;
+}
+.formulario input[type=checkbox]{
+    margin: 4% 2% 3% 0;
+}

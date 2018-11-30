@@ -4,54 +4,53 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - VistasPostAdd</title>
-
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/main.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/main.min.css" asp-append-version="true" />
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">VistasPostAdd</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-            </div>
+     <nav id="nav-menu">
+        <a href="#" id="nav-logo"><img src="~/images/logo.png" alt="PostAdd"></a>
+        <div id="menu">
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/Tienda">Tienda</a></li>
+                <li><a href="/Registro">Registrate</a></li>
+                <li><a href="/Iniciarsesion">Inicia sesión</a></li>
+            </ul>
         </div>
-    </nav>
-
-    <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
+    </nav> 
+    <div class="container-fluid body-content">
         @RenderBody()
-        <hr />
         <footer>
-            <p>&copy; 2018 - VistasPostAdd</p>
+            <div class="f-menu">
+                <ul>
+                    <li><a href="#">Hogar</a></li>
+                    <li><a href="#">Vehículos</a></li>
+                    <li><a href="#">Moda y Belleza</a></li>
+                    <li><a href="#">Derpotes y Entretenimiento</a></li>
+                    <li><a href="#">Electrónica</a></li>
+                    <li><a href="#">Negocios y servicios</a></li>
+                    <li><a href="#">Otros</a></li>
+                </ul>
+                <a href="#"><img src="" alt=""></a>
+                <a href="#"><img src="" alt=""></a>
+            </div>
+            <p>PostAdd 2018 - Copyright &copy; Todos los derechos reservados.</p>
         </footer>
     </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/engine.js" asp-append-version="true"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
