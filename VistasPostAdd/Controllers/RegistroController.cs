@@ -3,12 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using PostAds.Models;
+using VistasPostAdd.ViewModel;
 
 namespace VistasPostAdd.Controllers
 {
     public class RegistroController : Controller
     {
+        private readonly UserManager<AppUser> userManager;
+
+        public RegistroController(UserManager<AppUser> userManager)
+        {
+            this.userManager = userManager;
+        }
+        
         // GET: Registro
         public ActionResult Index()
         {
@@ -30,18 +40,27 @@ namespace VistasPostAdd.Controllers
         // POST: Registro/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(RegisterVM model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var user = new AppUser
+                {
+                    UserName = model.Email,
+                    Nombre = model.Nombre,
+                    Apellido = model.Apellido,
+                    Email = model.Email
+                };
 
-                return RedirectToAction(nameof(Index));
+                var CreateUser = await userManager.CreateAsync(user, model.Password);
+                if (CreateUser.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("Index", model);
         }
 
         // GET: Registro/Edit/5
