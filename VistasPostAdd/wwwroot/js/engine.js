@@ -66,10 +66,10 @@ $(document).ready(function(){
     var titulo = $('#titulo').val();
     var precio = $('precio').val();
     var descripcion = $('descripcion').val();
-    var divdrop = document.getElementsByClassName('drop-files')[0];
-    var div = document.getElementsByClassName('publicar-fotos')[0];
-    var btnupload = document.getElementById('btn-upload');
-    var btnfiles = document.getElementById('files-upload');
+    var divdrop = $('.drop-files')[0];
+    var div = $('.publicar-fotos')[0];
+    var btnupload = $('#btn-upload')[0];
+    var btnfiles = $('#files-upload')[0];
 
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         div.addEventListener(eventName, preventDefaults, false);
@@ -136,7 +136,7 @@ $(document).ready(function(){
 
     }
 
-    var btnsend = document.getElementById('btn-send');
+    var btnsend = $('#btn-send')[0];
 
     btnsend.addEventListener('click',saveProduct,false);
 

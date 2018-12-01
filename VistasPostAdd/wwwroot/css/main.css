@@ -173,19 +173,19 @@ footer p {
     border-radius: 4px;
     padding: 3%;
 }
+.login span,.registro span {
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    color: rgba(0,0,0,.6);
+    font-weight: 600;
+}
 #r-title {
     margin-top: 5%;
     font-size: 2.3em;
     color: rgba(0,0,0,.7);
     display: block;
     text-align: center;
-}
-.registro span {
-    display: block;
-    text-align: center;
-    font-size: 2em;
-    color: rgba(0,0,0,.6);
-    font-weight: 600;
 }
 .formulario {
     margin: 3%;
