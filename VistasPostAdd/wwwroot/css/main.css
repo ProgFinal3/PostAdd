@@ -25,9 +25,6 @@ a {
 #nav-logo img {
     width: 100%;
 }
-#menu img {
-
-}
 #menu ul {
     display: flex;
     list-style: none;
@@ -169,6 +166,13 @@ footer p {
     border-radius: 4px;
     padding: 3%;
 }
+.login {
+    width: 35%;
+    margin: 5% auto 0 auto;
+    border: 2px rgba(0,0,0,.2) solid;
+    border-radius: 4px;
+    padding: 3%;
+}
 #r-title {
     margin-top: 5%;
     font-size: 2.3em;
@@ -221,3 +225,78 @@ footer p {
 .formulario input[type=checkbox]{
     margin: 4% 2% 3% 0;
 }
+
+/* PUBLICAR CSS */
+
+.publicar-fotos {
+    display: block;
+    padding: 20% 0 24% 0;
+    border: dashed;
+    border-radius: 5px;
+    color: rgba(0,0,0,.3);
+    margin: 5% 0 0 10%;
+}
+.publicar-fotos span {
+    font-size: 2.5em;
+    color: rgba(0,0,0,.7);
+    display: block;
+    text-align: center;
+    margin-bottom: 2%;
+}
+.publicar-fotos i {
+    font-size: 3em;
+    color: rgba(0,0,0,.7);
+    display: block;
+    text-align: center;
+    margin: 2% 0 2% 0;
+}
+#btn-upload {
+    background-color: transparent;
+    padding: 2% 3% 2% 3%;
+    font-size: 1.2em;
+    color: rgba(0,0,0,.7);
+    border: 1px rgba(0,0,0,.4) solid;
+    border-radius: 3px;
+    display: block;
+    margin: auto;
+    transition: all .5s;
+}
+#btn-upload:hover {
+    background-color: rgba(250,0,0,.6);
+    color: white;
+    border: 1px rgba(250,0,0,.4) solid;
+}
+
+.publicar-descripcion {
+    display: block;  
+    padding: 3% 10% 5% 5%;
+}
+.publicar-descripcion span {
+    font-size: 2em;
+    color: rgba(0,0,0,.7);
+    display: block;
+    text-align: center;
+}
+.publicar-descripcion input, textarea {
+    display: block;
+    width: 100%;
+    border: 1px rgba(0,0,0,.3) solid;
+    border-radius: 3px;
+    resize: none;
+}
+.publicar-descripcion label {
+    font-size: 1.2em;
+    margin: 2% 0 2% 1%;
+}
+.publicar-descripcion input[type=submit] {
+    margin-top: 3%;
+    background-color: transparent;
+    transition: all .5s;
+}
+.publicar-descripcion input[type=submit]:hover {
+    margin-top: 3%;
+    background-color: rgba(250,0,0,.6);
+    border: 1px rgba(250,0,0,.6) solid;
+    color: white;
+}
+

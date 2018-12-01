@@ -3,4 +3,39 @@
     ViewData["Title"] = "Index";
 }
 
-
+<div class="row">
+    <div class="col-lg-12">
+        <form action="">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="publicar-fotos">
+                        <span>Agregar fotos</span>
+                        <i class="fa fa-image"></i>
+                        <div class="drop-files">
+                            <input 
+                                type="file" 
+                                name="fotos" 
+                                id="files-upload" 
+                                style="display:none;" 
+                                multiple="" 
+                                accept="image/png, image/jpeg">
+                            <button id="btn-upload">Subir desde el dispositivo</button>
+                        </div>  
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="publicar-descripcion">
+                        <span>Datos del producto</span>
+                        <label for="titulo">Título:</label>
+                        <input type="text" id="titulo" placeholder="Título del producto">
+                        <label for="precio">Precio:</label>
+                        <input type="text" id="precio" placeholder="Precio del producto">
+                        <label for="descripcion">Descripción del producto:</label>
+                        <textarea id="descripcion" onresize="none" placeholder="Descripción del producto" style="padding:2%" cols="40" rows="5"></textarea>
+                        <input type="submit" value="Publicar producto">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
