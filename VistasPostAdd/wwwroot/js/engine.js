@@ -73,13 +73,6 @@ $(document).ready(function(){
 
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         div.addEventListener(eventName, preventDefaults, false);
-        if(eventName == "dragleave"){
-            div.style.color = "orange";
-        }else if(eventName == "drop"){
-            div.style.color = "rgba(0,0,0,.3)";
-        }else{
-            div.style.color = "green";
-        }
     });
 
     div.addEventListener('drop', drop, false);
