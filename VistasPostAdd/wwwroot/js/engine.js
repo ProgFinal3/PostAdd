@@ -141,7 +141,7 @@ $(document).ready(function(){
     btnsend.addEventListener('click',saveProduct,false);
 
     function saveProduct(e){
-        let url = location.protocol + "//" + location.hostname + "/SavePhoto";
+        let url = location.protocol + "//" + location.hostname + "/Publicar/Create/";
         let formData = new FormData();
         formData.append('file', files);
         fetch(url, {

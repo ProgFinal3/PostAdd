@@ -1,8 +1,12 @@
-﻿
+﻿@model IEnumerable<PostAds.Models.Anuncio>
+@using Microsoft.AspNetCore.Identity
+@using PostAds.Models
+
 @{
     ViewData["Title"] = "PostAdd";
 }
 
+@inject UserManager<AppUser> UserManager
 <div class="row">
     <div class="col-lg-12">
         <div id="banner"></div>
@@ -30,51 +34,90 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                            <div class="post">
-                                <div class="post-info">
-                                    <span>Carro</span>
-                                    <span>$50,000</span>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                    <a href="#">Ver más</a>
-                                </div>
+                @* card para anuncio *@
+                <div class="card-container">
+                    @foreach (var item in Model)
+                    {
+                        var user = UserManager.Users.Where(x => x.Id == item.AppUserId).FirstOrDefault();
+                        var img = item.Imagens.FirstOrDefault();
+
+                        <div class="card">
+                            <div class="card-head">
+
+                                <img src="~/images/Anuncios/@img.NombreArchivo" alt="Alternate Text" />
+                                
                             </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                            <div class="post">
-                                <div class="post-info">
-                                    <span>Carro</span>
-                                    <span>$50,000</span>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                    <a href="#">Ver más</a>
-                                </div>
+                            <div class="card-body">
+                                <h3 class="text-capitalize">@item.Titulo</h3>
+                                <h4>RD$ @item.PrecioVenta</h4>
+                                <ul>
+                                    <li>Categoria</li>
+                                    <li>Estado: @item.Estado</li>
+                                    <li class="text-capitalize">@user.Nombre @user.Apellido</li>
+                                    <li>Fecha: @item.FechaPublicaccion.ToString("dd/MM/yyyy")</li>
+                                </ul>
+                                <a href="#" class="btn btn-primary btn-block">Ver Mas</a>
                             </div>
+                        </div>
+                    }
+
+
+                    @*<div class="card">
+                        <div class="card-head">
+                            <img src="~/images/banner2.png" alt="Alternate Text" />
+                        </div>
+                        <div class="card-body">
+                            <h3>Titulo Anuncio</h3>
+                            <h4>RD$ 15000</h4>
+                            <ul>
+                                <li>Categoria</li>
+                                <li>Vendedor</li>
+                                <li>fecha</li>
+                            </ul>
+                            <a href="#" class="btn btn-primary btn-block">Ver Mas</a>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                            <div class="post">
-                                <div class="post-info">
-                                    <span>Carro</span>
-                                    <span>$50,000</span>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                            <div class="post">
-                                <div class="post-info">
-                                    <span>Carro</span>
-                                    <span>$50,000</span>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                    </div>
-                </div>
+
+                </div>*@
+
             </div>
+                @* termina card para anuncio *@
+
+                @*<div class="row">
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="post">
+                            <div class="post-info">
+                                <span>Carro</span>
+                                <span>$50,000</span>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+                                <a href="#">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="post">
+                            <div class="post-info">
+                                <span>Carro</span>
+                                <span>$50,000</span>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+                                <a href="#">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="post">
+                            <div class="post-info">
+                                <span>Carro</span>
+                                <span>$50,000</span>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+                                <a href="#">Ver más</a>
+                            </div>
+                        </div>
+                    </div>*@
         </div>
+      </div>
     </div>
 </div>

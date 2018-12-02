@@ -55,7 +55,7 @@ namespace VistasPostAdd.Controllers
                 var CreateUser = await userManager.CreateAsync(user, model.Password);
                 if (CreateUser.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Login");
                 }
 
             }

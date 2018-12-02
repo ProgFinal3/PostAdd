@@ -74,7 +74,7 @@ namespace VistasPostAdd.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Anuncio",
+                name: "Anuncios",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -89,9 +89,9 @@ namespace VistasPostAdd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Anuncio", x => x.Id);
+                    table.PrimaryKey("PK_Anuncios", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Anuncio_AspNetUsers_AppUserId",
+                        name: "FK_Anuncios_AspNetUsers_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -184,7 +184,7 @@ namespace VistasPostAdd.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categoria",
+                name: "Categorias",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -194,17 +194,17 @@ namespace VistasPostAdd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categoria", x => x.Id);
+                    table.PrimaryKey("PK_Categorias", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Categoria_Anuncio_AnuncioId",
+                        name: "FK_Categorias_Anuncios_AnuncioId",
                         column: x => x.AnuncioId,
-                        principalTable: "Anuncio",
+                        principalTable: "Anuncios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Imagen",
+                name: "Imagens",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -214,18 +214,18 @@ namespace VistasPostAdd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Imagen", x => x.Id);
+                    table.PrimaryKey("PK_Imagens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Imagen_Anuncio_AnuncioId",
+                        name: "FK_Imagens_Anuncios_AnuncioId",
                         column: x => x.AnuncioId,
-                        principalTable: "Anuncio",
+                        principalTable: "Anuncios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Anuncio_AppUserId",
-                table: "Anuncio",
+                name: "IX_Anuncios_AppUserId",
+                table: "Anuncios",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
@@ -268,14 +268,14 @@ namespace VistasPostAdd.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categoria_AnuncioId",
-                table: "Categoria",
+                name: "IX_Categorias_AnuncioId",
+                table: "Categorias",
                 column: "AnuncioId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Imagen_AnuncioId",
-                table: "Imagen",
+                name: "IX_Imagens_AnuncioId",
+                table: "Imagens",
                 column: "AnuncioId");
         }
 
@@ -297,16 +297,16 @@ namespace VistasPostAdd.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Categoria");
+                name: "Categorias");
 
             migrationBuilder.DropTable(
-                name: "Imagen");
+                name: "Imagens");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Anuncio");
+                name: "Anuncios");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
