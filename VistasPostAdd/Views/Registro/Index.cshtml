@@ -1,25 +1,45 @@
-﻿@{
+﻿@model VistasPostAdd.ViewModel.RegisterVM
+@{
     ViewData["Title"] = "PostAdd";
 }
 
 <div class="row">
     <div class="col-lg-12">
+        <span id="r-title">Bienvenido a PostAdd, Registrate y se parte de este gran equipo.</span>
         <div class="registro">
             <span>Registrate gratis.</span>
             <div class="formulario">
-                <form action="">
-                    <label for="name">Nombre:</label>
-                    <input type="text" id="name" placeholder="Nombre" required>
-                    <label for="name">Apellido:</label>
-                    <input type="text" id="lastname" placeholder="Apellido" required>
-                    <label for="name">Correo:</label>
-                    <input type="text" id="email" placeholder="Correo" required>
-                    <label for="name">Contraseña:</label>
-                    <input type="password" id="password" placeholder="Contraseña" required>
-                    <input type="checkbox" id="terms">Acepto los términos y condiciones.
-                    <input type="submit" id="btn-register" value="Enviar">
+                <form asp-action="Create" method="post">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <label asp-for="Nombre"></label>
+                    <input asp-for="Nombre" id="Nombre" name="Nombre" placeholder="Nombre">
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+
+                    <label asp-for="Apellido"></label>
+                    <input asp-for="Apellido" id="Apellido" name="Apellido" placeholder="Apellido">
+                    <span asp-validation-for="Apellido" class="text-danger"></span>
+
+                    <label asp-for="Email"></label>
+                    <input asp-for="Email" id="Email" name="Email" placeholder="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <label asp-for="Password"></label>
+                    <input asp-for="Password" id="Password" name="Password" placeholder="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                    <label asp-for="ConfirmPassword"></label>
+                    <input asp-for="ConfirmPassword" id="ConfirmPassword" name="ConfirmPassword" placeholder="ConfirmPassword">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                    <input type="checkbox">Acepto los términos y condiciones.
+                    <input type="submit" value="Enviar">
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
