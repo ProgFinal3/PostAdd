@@ -6,29 +6,16 @@
 $(document).ready(function(){
 
     /* LOGIN */ 
-    var userlog = $('#email').val();
-    var passlog = $('#pass').val();
-    if(userlog != "" && passlog != "") {
-        const urlogin = location.protocol + "//" + location.hostname + "/Login";
-        let datos = {
-            'user':userlog,
-            'pass':passlog
-        };
-        $.ajax({
-            url:urlogin,
-            data:datos,
-            success:function(response){
-                if (response) {
-                    //hacer algo
-                }
-            },
-            error:function(error){
-                if (error) {
-                    //ver cual es el error
-                }
-            }
-        });
-    }
+    
+    var btnlogout = $('#btn-logout')[0];
+    var formlogout = $('#logoutForm')[0];
+        
+    btnlogout.addEventListener('click',(e)=>{
+        preventDefaults(e);
+
+        formlogout.submit();
+
+    });
 
     /* REGISTRO */
     var nombre = $('#name').val();
@@ -72,27 +59,27 @@ $(document).ready(function(){
     var btnfiles = $('#files-upload')[0];
     var data = 0;
     var imgprod = 0;
-
-    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        div.addEventListener(eventName, preventDefaults, false);
-    });
-
-    div.addEventListener('drop', drop, false);
-    div.addEventListener('dragover',(e)=>{
-        div.style.color = "green";
-    });
-    div.addEventListener('dragleave',(e)=>{
-        div.style.color = "orange";
-    });
-    btnupload.addEventListener('click',(e)=>{
-        preventDefaults(e);
-        btnfiles.click();
-    });
-    btnfiles.addEventListener('change',(e)=>{
-        let file = btnfiles.files;
-        imgprod = file;
-        mostrarArchivo(file);
-    });
+    if (div) {
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            div.addEventListener(eventName, preventDefaults, false);
+        });
+        div.addEventListener('drop', drop, false);
+        div.addEventListener('dragover',(e)=>{
+            div.style.color = "green";
+        });
+        div.addEventListener('dragleave',(e)=>{
+            div.style.color = "orange";
+        });
+        btnupload.addEventListener('click',(e)=>{
+            preventDefaults(e);
+            btnfiles.click();
+        });
+        btnfiles.addEventListener('change',(e)=>{
+            let file = btnfiles.files;
+            imgprod = file;
+            mostrarArchivo(file);
+        });
+    }
 
     function drop(e) {
         let dt = e.dataTransfer;
@@ -141,28 +128,31 @@ $(document).ready(function(){
     }
 
     var btnsend = $('#btn-send')[0];
+    if (btnsend) {
+        btnsend.addEventListener('click',saveProduct,false);
 
-    btnsend.addEventListener('click',saveProduct,false);
-
-    function saveProduct(e){
-        preventDefaults(e);
-        
-        let url = location.protocol + "//" + location.hostname + "/SavePhoto";
-        let formData = new FormData();
-        data = {
-            'titulo':titulo,
-            'precio':precio,
-            'descripcion':descripcion,
-            'imagen':imgprod
-        };
-        formData.append('file', data);
-        fetch(url, {
-          method: 'POST',
-          body: formData
-        })
-        .then(() => {  })
-        .catch(() => {  })
+        function saveProduct(e){
+            preventDefaults(e);
+            
+            let url = location.protocol + "//" + location.hostname + "/SavePhoto";
+            let formData = new FormData();
+            data = {
+                'titulo':titulo,
+                'precio':precio,
+                'descripcion':descripcion,
+                'imagen':imgprod
+            };
+            formData.append('file', data);
+            fetch(url, {
+            method: 'POST',
+            body: formData
+            })
+            .then(() => {  })
+            .catch(() => {  })
+        }
     }
+
+    
 
     /*  */
 
