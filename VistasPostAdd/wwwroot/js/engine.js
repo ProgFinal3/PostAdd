@@ -70,6 +70,7 @@ $(document).ready(function(){
     var div = $('.publicar-fotos')[0];
     var btnupload = $('#btn-upload')[0];
     var btnfiles = $('#files-upload')[0];
+    var data = 0;
 
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         div.addEventListener(eventName, preventDefaults, false);
@@ -124,6 +125,12 @@ $(document).ready(function(){
                 reader.onloadend = function (){
                     divimg.style.backgroundImage= "url("+reader.result+")";
                     divdrop.appendChild(divimg);
+                    data = {
+                        'titulo':titulo,
+                        'precio':precio,
+                        'descripcion':descripcion,
+                        'imagen':reader.result
+                    };
                 }
             }else {
                 divdrop.childNodes[1].innerText = "Solo puede subir una imagen.";
@@ -141,9 +148,11 @@ $(document).ready(function(){
     btnsend.addEventListener('click',saveProduct,false);
 
     function saveProduct(e){
+        preventDefaults(e);
+        
         let url = location.protocol + "//" + location.hostname + "/SavePhoto";
         let formData = new FormData();
-        formData.append('file', files);
+        formData.append('file', data);
         fetch(url, {
           method: 'POST',
           body: formData
