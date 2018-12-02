@@ -89,7 +89,7 @@ $(document).ready(function(){
         btnfiles.click();
     });
     btnfiles.addEventListener('change',(e)=>{
-        let file = btnfiles.files;
+        let file = btnfiles.files[0];
         imgprod = file;
         mostrarArchivo(file);
     });
@@ -164,6 +164,30 @@ $(document).ready(function(){
         .catch(() => {  })
     }
 
-    /*  */
+    /* ADMINISTRADOR CSS */
+
+    var urlconfig = "~/configuracion.html"; 
+    var urlpublicar = "~/publicaciones.html";
+    var urlusuarios = "~/usuarios.html";
+
+    var iframe = $('#admin-dash')[0];
+    iframe.seamless = true;
+
+    var btnpub = $('#link-pub')[0];
+    var btnusers = $('#link-users')[0];
+    var btnconfig = $('#link-config')[0];
+
+    btnpub.addEventListener('click',(e)=>{
+        preventDefaults(e);
+        iframe.src = urlpublicar;
+    });
+    btnusers.addEventListener('click',(e)=>{
+        preventDefaults(e);
+        iframe.src = urlusuarios;
+    });
+    btnconfig.addEventListener('click',(e)=>{
+        preventDefaults(e);
+        iframe.src = urlconfig;
+    });
 
 });
