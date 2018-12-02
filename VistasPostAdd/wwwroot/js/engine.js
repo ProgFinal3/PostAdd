@@ -127,6 +127,21 @@ $(document).ready(function(){
 
     }
 
+    var config = $('#config')[0];
+    var urlconfig = "~/configuracion.html";
+    var publish = $('#publish')[0];
+    var urlpublish = "~/publicaciones.html";
+    var iframe = $('#admin-dash')[0];
+    iframe.seamless = true;
+
+    config.addEventListener('click',(e)=>{
+        preventDefaults(e);
+
+        iframe.src = urlconfig;
+
+    });
+
+
     var btnsend = $('#btn-send')[0];
     if (btnsend) {
         btnsend.addEventListener('click',saveProduct,false);
