@@ -71,6 +71,7 @@ $(document).ready(function(){
     var btnupload = $('#btn-upload')[0];
     var btnfiles = $('#files-upload')[0];
     var data = 0;
+    var imgprod = 0;
 
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
         div.addEventListener(eventName, preventDefaults, false);
@@ -89,6 +90,7 @@ $(document).ready(function(){
     });
     btnfiles.addEventListener('change',(e)=>{
         let file = btnfiles.files;
+        imgprod = file;
         mostrarArchivo(file);
     });
 
@@ -125,12 +127,7 @@ $(document).ready(function(){
                 reader.onloadend = function (){
                     divimg.style.backgroundImage= "url("+reader.result+")";
                     divdrop.appendChild(divimg);
-                    data = {
-                        'titulo':titulo,
-                        'precio':precio,
-                        'descripcion':descripcion,
-                        'imagen':reader.result
-                    };
+                    
                 }
             }else {
                 divdrop.childNodes[1].innerText = "Solo puede subir una imagen.";
@@ -152,6 +149,12 @@ $(document).ready(function(){
         
         let url = location.protocol + "//" + location.hostname + "/SavePhoto";
         let formData = new FormData();
+        data = {
+            'titulo':titulo,
+            'precio':precio,
+            'descripcion':descripcion,
+            'imagen':imgprod
+        };
         formData.append('file', data);
         fetch(url, {
           method: 'POST',
@@ -160,5 +163,7 @@ $(document).ready(function(){
         .then(() => {  })
         .catch(() => {  })
     }
+
+    /*  */
 
 });
