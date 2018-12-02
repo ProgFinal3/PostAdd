@@ -153,7 +153,7 @@ namespace VistasPostAdd.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Anuncio");
+                    b.ToTable("Anuncios");
                 });
 
             modelBuilder.Entity("PostAds.Models.AppUser", b =>
@@ -232,7 +232,7 @@ namespace VistasPostAdd.Migrations
                     b.HasIndex("AnuncioId")
                         .IsUnique();
 
-                    b.ToTable("Categoria");
+                    b.ToTable("Categorias");
                 });
 
             modelBuilder.Entity("PostAds.Models.Imagen", b =>
@@ -249,7 +249,7 @@ namespace VistasPostAdd.Migrations
 
                     b.HasIndex("AnuncioId");
 
-                    b.ToTable("Imagen");
+                    b.ToTable("Imagens");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -15,5 +15,9 @@ namespace VistasPostAdd.Models
         {
 
         }
+
+        public DbSet<Anuncio> Anuncios { get; set; }
+        public DbSet<Imagen> Imagens { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
     }
 }
