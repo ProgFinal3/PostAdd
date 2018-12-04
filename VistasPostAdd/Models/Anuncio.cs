@@ -17,7 +17,7 @@ namespace PostAds.Models
 
         //Relationship
         public string AppUserId { get; set; }
-        public List<Imagen> Imagens { get; set; }
+        public List<Imagen> Imagen { get; set; }
         public Categoria Categoria { get; set; }
     }
 }

@@ -39,12 +39,11 @@
                     @foreach (var item in Model)
                     {
                         var user = UserManager.Users.Where(x => x.Id == item.AppUserId).FirstOrDefault();
-                        var img = item.Imagens.FirstOrDefault();
+                        var img = item.Imagen.FirstOrDefault();
 
                     <div class="row">
-
                         <div class="col-lg-6 col-md-6">
-                            <div class="post" style=" background-image: Url('../../wwwroot/images/Anuncios/@img.NombreArchivo');">
+                            <div class="post" style="background-image: url('~/images/Anuncios/@img.NombreArchivo')">
                                 <div class="post-info">
                                     <span>@item.Titulo</span>
                                     <span>RD$ @item.PrecioVenta</span>

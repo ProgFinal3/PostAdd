@@ -10,14 +10,14 @@ using VistasPostAdd.Models;
 namespace VistasPostAdd.Migrations
 {
     [DbContext(typeof(AppDbContex))]
-    [Migration("20181202043101_Initial")]
-    partial class Initial
+    [Migration("20181203210141_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -155,7 +155,7 @@ namespace VistasPostAdd.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("Anuncios");
+                    b.ToTable("Anuncio");
                 });
 
             modelBuilder.Entity("PostAds.Models.AppUser", b =>
@@ -234,7 +234,7 @@ namespace VistasPostAdd.Migrations
                     b.HasIndex("AnuncioId")
                         .IsUnique();
 
-                    b.ToTable("Categorias");
+                    b.ToTable("Categoria");
                 });
 
             modelBuilder.Entity("PostAds.Models.Imagen", b =>
@@ -251,7 +251,7 @@ namespace VistasPostAdd.Migrations
 
                     b.HasIndex("AnuncioId");
 
-                    b.ToTable("Imagens");
+                    b.ToTable("Imagen");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -317,7 +317,7 @@ namespace VistasPostAdd.Migrations
             modelBuilder.Entity("PostAds.Models.Imagen", b =>
                 {
                     b.HasOne("PostAds.Models.Anuncio")
-                        .WithMany("Imagens")
+                        .WithMany("Imagen")
                         .HasForeignKey("AnuncioId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

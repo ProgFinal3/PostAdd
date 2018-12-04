@@ -1,11 +1,18 @@
-﻿@model VistasPostAdd.ViewModel.AnuncioVM
+﻿
+@model VistasPostAdd.ViewModel.AnuncioVM
 @{
     ViewData["Title"] = "Index";
 }
 
 <div class="row">
     <div class="col-lg-12">
-        <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <form asp-action="Create" id="form-pub" method="post" enctype="multipart/form-data">
+            <input type="file"
+                    name="Imagen"
+                    id="files-upload"
+                    accept="image/*"
+                    style="visibility:hidden"
+                    multiple>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="publicar-fotos">
@@ -13,11 +20,6 @@
                             <span>Agregar fotos</span>
                             <i class="fa fa-image"></i>
                             <button id="btn-upload">Subir desde el dispositivo</button>
-                            <input type="file"
-                                   name="Imagen"
-                                   id="file-upload"
-                                   style="display:none;"
-                                   accept="image/*">
                         </div>
                     </div>
                 </div>

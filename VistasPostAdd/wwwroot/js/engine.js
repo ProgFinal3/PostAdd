@@ -10,12 +10,14 @@ $(document).ready(function(){
     var btnlogout = $('#btn-logout')[0];
     var formlogout = $('#logoutForm')[0];
         
-    btnlogout.addEventListener('click',(e)=>{
-        preventDefaults(e);
-
-        formlogout.submit();
-
-    });
+    if(btnlogout){
+        btnlogout.addEventListener('click',(e)=>{
+            preventDefaults(e);
+    
+            formlogout.submit();
+    
+        });
+    }
 
     /* REGISTRO */
     var nombre = $('#name').val();
@@ -50,16 +52,17 @@ $(document).ready(function(){
 
     /* PUBLICAR */
 
-    var titulo = $('#titulo').val();
-    var precio = $('precio').val();
-    var descripcion = $('descripcion').val();
+    var titulo = $('#Titulo').val();
+    var precio = $('#PrecioVenta').val();
+    var descripcion = $('#Descripcion').val();
+    var estado = $('#Estado').val();
     var divdrop = $('.drop-files')[0];
     var div = $('.publicar-fotos')[0];
     var btnupload = $('#btn-upload')[0];
     var btnfiles = $('#files-upload')[0];
     var data = 0;
-    var imgprod = 0;
-    if (div) {
+    var imgprod = [];
+   
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             div.addEventListener(eventName, preventDefaults, false);
         });
@@ -79,13 +82,13 @@ $(document).ready(function(){
             imgprod = file;
             mostrarArchivo(file);
         });
-    }
+    
 
     function drop(e) {
         let dt = e.dataTransfer;
-        let file = dt.files;
+        btnfiles.files=dt.files;
         div.style.color = "rgba(0,0,0,.3)";
-        mostrarArchivo(file); 
+        mostrarArchivo(dt.files); 
     }
 
     function preventDefaults(e) {
@@ -96,29 +99,86 @@ $(document).ready(function(){
     function mostrarArchivo(file){
 
         function volver(){
-            divdrop.childNodes[1].innerText = "Agregar fotos";
+            divdrop.childNodes[1].innerText = "Arrastra tus fotos";
         }
 
         var reader = new FileReader();
+        var reader2 = new FileReader();
+        var reader3 = new FileReader();
             
         if (file[0].type.startsWith('image/')) {
             if (file.length == 1) {
-                let divpad = $('.publicar-fotos')[0];
                 let divimg = document.createElement('div');
                 divimg.setAttribute('class','img-upload');
                 divdrop.innerHTML='';
-                divpad.style.padding = '2% 0 2% 0';
-                if (file) {
+                div.style.padding = '2% 0 2% 0';
+                if (file[0]) {
                     reader.readAsDataURL(file[0]);
                 }
                 reader.onloadend = function (){
                     divimg.style.backgroundImage= "url("+reader.result+")";
-                    divdrop.appendChild(divimg);
-                    
+                    divdrop.appendChild(divimg); 
+                    imgprod.unshift(file[0]);
                 }
-            }else {
-                divdrop.childNodes[1].innerText = "Solo puede subir una imagen.";
-                setTimeout(volver,5000);
+            }else if(file.length == 2){
+                let divimg1 = document.createElement('div');
+                let divimg2 = document.createElement('div');
+                divimg1.setAttribute('class','img-upload-2');
+                divimg2.setAttribute('class','img-upload-2');
+                divdrop.innerHTML='';
+                div.style.padding = '2% 0 2% 0';
+                if (file[0]) {
+                    reader.readAsDataURL(file[0]);
+                    reader.onloadend = function (){
+                        divimg1.style.backgroundImage= "url("+reader.result+")";
+                        divdrop.appendChild(divimg1);
+                        imgprod.unshift(file[0]);
+                    }
+                }
+                if (file[1]) {
+                    reader2.readAsDataURL(file[1]);
+                    reader2.onloadend = function (){
+                        divimg2.style.backgroundImage= "url("+reader2.result+")";
+                        divdrop.appendChild(divimg2); 
+                        imgprod.unshift(file[1]);
+                    }
+                }
+            }else if (file.length == 3) {
+                let divimg1 = document.createElement('div');
+                let divimg2 = document.createElement('div');
+                let divimg3 = document.createElement('div');
+                divimg1.setAttribute('class','img-upload-3');
+                divimg2.setAttribute('class','img-upload-3');
+                divimg3.setAttribute('class','img-upload-3');
+                divdrop.innerHTML='';
+                div.style.padding = '2% 0 2% 0';
+                if (file[0]) {
+                    reader.readAsDataURL(file[0]);
+                    reader.onloadend = function (){
+                        divimg1.style.backgroundImage= "url("+reader.result+")";
+                        divdrop.appendChild(divimg1);
+                        imgprod.unshift(file[0]);
+                    }
+                }
+                if (file[1]) {
+                    reader2.readAsDataURL(file[1]);
+                    reader2.onloadend = function (){
+                        divimg2.style.backgroundImage= "url("+reader2.result+")";
+                        divdrop.appendChild(divimg2);
+                        imgprod.unshift(file[1]); 
+                    }
+                }
+                if (file[2]) {
+                    reader3.readAsDataURL(file[2]);
+                    reader3.onloadend = function (){
+                        divimg3.style.backgroundImage= "url("+reader3.result+")";
+                        divdrop.appendChild(divimg3);
+                        imgprod.unshift(file[2]);
+                    }
+                }
+            }else{
+                divdrop.childNodes[1].innerText = "Solo se pueden subir 3 imagenes.";
+            setTimeout(volver,5000);
             }
         } else {
             divdrop.childNodes[1].innerText = "Solo se aceptan imagenes.";
@@ -131,39 +191,42 @@ $(document).ready(function(){
     var urlconfig = "~/configuracion.html";
     var publish = $('#publish')[0];
     var urlpublish = "~/publicaciones.html";
+    var users = $('#users')[0];
+    var urlusers = "~/usuarios.html";
     var iframe = $('#admin-dash')[0];
-    iframe.seamless = true;
+    if (iframe) {
+        iframe.seamless = true;
+    }
 
-    config.addEventListener('click',(e)=>{
-        preventDefaults(e);
-
-        iframe.src = urlconfig;
-
-    });
-
+    if (config) {
+        config.addEventListener('click',(e)=>{
+            preventDefaults(e);
+            iframe.src = urlconfig;
+        });
+    }
+    if (publish) {
+        publish.addEventListener('click',(e)=>{
+            preventDefaults(e);
+            iframe.src = urlpublish;
+        });
+    }
+    if (users) {
+        users.addEventListener('click',(e)=>{
+            preventDefaults(e);
+            iframe.src = urlusers;
+        });
+    }
 
     var btnsend = $('#btn-send')[0];
+    var formpub = $('#form-pub')[0];
     if (btnsend) {
         btnsend.addEventListener('click',saveProduct,false);
 
         function saveProduct(e){
             preventDefaults(e);
             
-            let url = location.protocol + "//" + location.hostname + "/SavePhoto";
-            let formData = new FormData();
-            data = {
-                'titulo':titulo,
-                'precio':precio,
-                'descripcion':descripcion,
-                'imagen':imgprod
-            };
-            formData.append('file', data);
-            fetch(url, {
-            method: 'POST',
-            body: formData
-            })
-            .then(() => {  })
-            .catch(() => {  })
+            formpub.submit();
+                  
         }
     }
 

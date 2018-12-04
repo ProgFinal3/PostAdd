@@ -60,14 +60,14 @@ namespace VistasPostAdd.Controllers
                 dbContex.SaveChanges();
 
                 //Obteniendo Id Anuncio actual y guardando imagenes en tabla y carpetas
-                var Anuncio = dbContex.Anuncios.Where(x => x.Titulo == model.Titulo).FirstOrDefault();
+                var Anuncio = dbContex.Anuncio.Where(x => x.Titulo == model.Titulo).FirstOrDefault();
                 foreach (var item in Imagen)
                 {
                 var fileName = Path.Combine(env.WebRootPath + "/images/Anuncios", Path.GetFileName(item.FileName));
                 item.CopyTo(new FileStream(fileName, FileMode.Create));
                 var img = new Imagen { NombreArchivo = item.FileName, AnuncioId = Anuncio.Id};
 
-                    dbContex.Imagens.Add(img);
+                    dbContex.Imagen.Add(img);
                     dbContex.SaveChanges();
 
                 }

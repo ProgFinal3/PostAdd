@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VistasPostAdd.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -74,7 +74,7 @@ namespace VistasPostAdd.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Anuncios",
+                name: "Anuncio",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -89,9 +89,9 @@ namespace VistasPostAdd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Anuncios", x => x.Id);
+                    table.PrimaryKey("PK_Anuncio", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Anuncios_AspNetUsers_AppUserId",
+                        name: "FK_Anuncio_AspNetUsers_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -184,7 +184,7 @@ namespace VistasPostAdd.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categorias",
+                name: "Categoria",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -194,17 +194,17 @@ namespace VistasPostAdd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categorias", x => x.Id);
+                    table.PrimaryKey("PK_Categoria", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Categorias_Anuncios_AnuncioId",
+                        name: "FK_Categoria_Anuncio_AnuncioId",
                         column: x => x.AnuncioId,
-                        principalTable: "Anuncios",
+                        principalTable: "Anuncio",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Imagens",
+                name: "Imagen",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -214,18 +214,18 @@ namespace VistasPostAdd.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Imagens", x => x.Id);
+                    table.PrimaryKey("PK_Imagen", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Imagens_Anuncios_AnuncioId",
+                        name: "FK_Imagen_Anuncio_AnuncioId",
                         column: x => x.AnuncioId,
-                        principalTable: "Anuncios",
+                        principalTable: "Anuncio",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Anuncios_AppUserId",
-                table: "Anuncios",
+                name: "IX_Anuncio_AppUserId",
+                table: "Anuncio",
                 column: "AppUserId");
 
             migrationBuilder.CreateIndex(
@@ -268,14 +268,14 @@ namespace VistasPostAdd.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categorias_AnuncioId",
-                table: "Categorias",
+                name: "IX_Categoria_AnuncioId",
+                table: "Categoria",
                 column: "AnuncioId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Imagens_AnuncioId",
-                table: "Imagens",
+                name: "IX_Imagen_AnuncioId",
+                table: "Imagen",
                 column: "AnuncioId");
         }
 
@@ -297,16 +297,16 @@ namespace VistasPostAdd.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Categorias");
+                name: "Categoria");
 
             migrationBuilder.DropTable(
-                name: "Imagens");
+                name: "Imagen");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Anuncios");
+                name: "Anuncio");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

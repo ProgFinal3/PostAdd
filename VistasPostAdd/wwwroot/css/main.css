@@ -232,14 +232,30 @@ footer p {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 80%;
-    height: 430px;
+    width: 90%;
+    height: 530px;
     margin: auto;
 }
-.publicar-fotos {
-    height: 460px;
+.img-upload-2 {
+    width: 49%;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 530px;
+}
+.img-upload-3 {
+    width: 100%;
     display: block;
-    padding: 20% 0 24% 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 180px;
+}
+.publicar-fotos {
+    height: 560px;
+    display: block;
+    padding: 26% 0 24% 0;
     border: dashed;
     border-radius: 5px;
     color: rgba(0,0,0,.3);

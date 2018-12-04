@@ -19,8 +19,7 @@ namespace VistasPostAdd.Controllers
         }
         public IActionResult Index()
         {
-           
-            return View(dbContex.Anuncios.Include(x => x.Imagens).ToList());
+            return View(dbContex.Anuncio.Include(x => x.Imagen).ToList());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
