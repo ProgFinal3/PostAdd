@@ -29,9 +29,12 @@ namespace VistasPostAdd.Controllers
             this.userManager = userManager;
         }
         // GET: Publicar
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-
+            if (id != null)
+            {
+            ViewBag.Ads = dbContex.Anuncio.Include(x => x.Imagen).Where(x => x.Id == id).First();
+            }
             return View();
         }
 
@@ -83,14 +86,50 @@ namespace VistasPostAdd.Controllers
         }
 
         // GET: Publicar/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int? id, AnuncioVM model, IEnumerable<IFormFile> Imagen)
         {
-            return View();
+            if (ModelState.IsValid && Imagen != null)
+            {
+
+               var ads =  dbContex.Anuncio.Include(x => x.Imagen).Where(x => x.Id == id).First();
+
+                ads.Titulo = model.Titulo;
+                ads.PrecioVenta = model.PrecioVenta;
+                ads.Descripcion = model.Descripcion;
+                ads.Estado = model.Estado;
+                dbContex.Update(ads);
+
+
+
+                foreach (var item in Imagen)
+                {
+
+                    foreach (var item2 in ads.Imagen)
+                    {
+                        var file = Path.Combine(env.WebRootPath + "/images/Anuncios", Path.GetFileName(item.FileName));
+                        System.IO.File.Delete(file);
+
+                    }
+
+                    var fileName = Path.Combine(env.WebRootPath + "/images/Anuncios", Path.GetFileName(item.FileName));
+                    item.CopyTo(new FileStream(fileName, FileMode.Create));
+                    var img = new Imagen { NombreArchivo = item.FileName, AnuncioId = ads.Id };
+
+                    dbContex.Imagen.Add(img);
+                    dbContex.SaveChanges();
+
+                }
+
+
+                dbContex.SaveChanges();
+            }
+                return View();
         }
 
         // POST: Publicar/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
         public ActionResult Edit(int id, IFormCollection collection)
         {
             try
