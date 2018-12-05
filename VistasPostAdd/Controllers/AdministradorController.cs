@@ -40,9 +40,9 @@ namespace VistasPostAdd.Controllers
                 var Ads = dbContex.Anuncio.Where(x => x.Id == id).First();
                 dbContex.Anuncio.Remove(Ads);
                 dbContex.SaveChanges();
-                return RedirectToAction();
+                return RedirectToAction("Publicaciones");
             }
-            return RedirectToAction();
+            return RedirectToAction("Publicaciones");
         }
 
         public IActionResult LockPublicaciones(int id)
@@ -52,9 +52,9 @@ namespace VistasPostAdd.Controllers
                 var user = dbContex.Anuncio.Where(x => x.Id == id).First();
                 user.Bloqueado = !user.Bloqueado;
                 dbContex.SaveChanges();
-                return RedirectToAction();
+                return RedirectToAction("Publicaciones");
             }
-            return RedirectToAction();
+            return RedirectToAction("Publicaciones");
         }
 
         public ActionResult Usuarios()

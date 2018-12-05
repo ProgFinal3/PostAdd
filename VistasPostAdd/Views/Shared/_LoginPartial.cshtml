@@ -5,9 +5,10 @@
 @inject UserManager<AppUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
-{    
+{
+    var user = await UserManager.GetUserAsync(User);
     <li>
-        <a asp-area="" asp-controller="Administrador" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+        <a asp-area="" asp-controller="Administrador" asp-action="Index" title="Manage">Hello @user.Nombre @user.Apellido!</a>
     </li>
     <li>
         <a href="#" id="btn-logout">Logout</a>

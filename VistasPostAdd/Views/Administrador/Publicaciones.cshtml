@@ -1,7 +1,9 @@
-﻿
+﻿@model IEnumerable<PostAds.Models.Anuncio>
 @{
     ViewData["Title"] = "Publicaciones";
 }
+
+@inject AppDbContex dbContext
 
 <div class="row">
     <div class="col-lg-12">
@@ -10,7 +12,7 @@
                 <div class="admin">
                     <span>Administrador</span>
                     <ul>
-                       <partial name="_IndexAdminPartial">
+                        <partial name="_IndexAdminPartial">
                     </ul>
                 </div>
             </div>
@@ -20,12 +22,12 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="contador">
-                                <span><i class="fa fa-user"></i> 500 Publicaciones</span>
+                                <span><i class="fa fa-user"></i> @Model.Count() Publicaciones</span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contador">
-                                <span><i class="fa fa-lock"></i> 5 Bloqueadas</span>
+                                <span><i class="fa fa-lock"></i> @Model.Where(x => x.Bloqueado == true).Count() Bloqueadas</span>
                             </div>
                         </div>
                     </div>
@@ -43,15 +45,21 @@
                                             <th>Eliminar</th>
                                             <th>Bloquear</th>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Smith</td>
-                                            <td>Srogaa</td>
-                                            <td><a class="btn btn-danger" asp-action="DeleteUser" asp-route-id="">Eliminar</a></td>
-                                            <td><a class="btn btn-warning" asp-action="BlockedUser" asp-route-id="">Bloquear</a></td>
-                                        </tr>
+                                        @foreach (var item in Model)
+                                        {
+                                            var poster = dbContext.Users.Where(x => x.Id == item.AppUserId).First();
+                                            var bloqueo = item.Bloqueado == false ? "Bloquear" : "Desbloquear";
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@poster.Nombre</td>
+                                                <td>@item.Titulo</td>
+                                                <td><a class="btn btn-danger" asp-action="DeletePublicaciones" asp-route-id="@item.Id">Eliminar</a></td>
+                                                <td><a class="btn btn-warning" asp-action="LockPublicaciones" asp-route-id="@item.Id">@bloqueo</a></td>
+                                            </tr>
+
+                                        }
                                     </table>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </div>
