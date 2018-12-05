@@ -1,6 +1,4 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+﻿@import url('https://fonts.googleapis.com/css?family=Montserrat');
 body {
     margin: 0;
     padding: 0;
@@ -402,4 +400,25 @@ span[id$="-error"], span .field-validation-error {
 .admin li a:hover {
     color: white;
     background-color: rgba(0,0,0,.4);
+}
+.contador {
+    width: 90%;
+    margin: 10% auto;
+    background-color: cornflowerblue;
+    padding: 15%; 
+}
+.contador span {
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: 2.5em;
+}
+.ads-blocked span, .user-blocked span {
+    display: block;
+    padding: 1%;
+    font-size: 2em;
+    font-weight: 600;
+}
+.pre-scrollable {
+    height: 150px;
 }

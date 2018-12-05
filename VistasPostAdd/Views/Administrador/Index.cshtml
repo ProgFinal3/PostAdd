@@ -1,6 +1,5 @@
 @{
     ViewData["Title"] = "Dashboard";
-    String vista = "_IndexAdminPartial";
 }
 
 <div class="row">
@@ -10,15 +9,79 @@
                 <div class="admin">
                     <span>Menu Administrador</span>
                     <ul>
-                       <li><a asp-action="Publicaciones">Publicaciones</a></li>
-                       <li><a asp-action="Usuarios">Usuarios</a></li>
-                       <li><a asp-action="Configuracion">Configuración</a></li>
+                       @Html.Partial("_IndexAdminPartial")
                     </ul>
                 </div>
             </div>
             <div class="col-lg-9 col-md-9">
                 <div class="admin-root">
-                    
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="contador">
+                                <span><i class="fa fa-user"></i> 500</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="contador">
+                                <span><i class="fa fa-plus-circle"></i> 500</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="contador">
+                                <span><i class="fa fa-user"></i> <i class="fa fa-lock"></i> 50</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="contador">
+                                <span><i class="fa fa-plus-circle"></i> <i class="fa fa-lock"></i> 50</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ads-blocked">
+                                <span>Anuncios</span>
+                                <div class="pre-scrollable">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Poster</th>
+                                            <th>Titulo</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Smith</td>
+                                            <td>Srogaa</td>
+                                        </tr>
+                                    </table>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="user-blocked">
+                                <span>Usuarios</span>
+                                 <div class="pre-scrollable">
+                                     <table class="table">
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            <th>Correo</th>
+                                            <th>Anuncios</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Jill</td>
+                                            <td>Smith</td>
+                                            <td>jill@@jilmail.com</td>
+                                            <td>50</td>
+                                        </tr>
+                                    </table>
+                                 </div> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
