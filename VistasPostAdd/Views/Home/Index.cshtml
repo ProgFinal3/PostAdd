@@ -7,6 +7,8 @@
 }
 
 @inject UserManager<AppUser> UserManager
+@inject AppDbContex dbContext
+
 <div class="row">
     <div class="col-lg-12">
         <div id="banner"></div>
@@ -23,13 +25,12 @@
                     <button>Buscar</button>
                     <span>Todas las categorías</span>
                     <ul>
-                        <li><a href="#">Hogar</a></li>
-                        <li><a href="#">Vehículos</a></li>
-                        <li><a href="#">Moda y Belleza</a></li>
-                        <li><a href="#">Derpotes y Entretenimiento</a></li>
-                        <li><a href="#">Electrónica</a></li>
-                        <li><a href="#">Negocios y servicios</a></li>
-                        <li><a href="#">Otros</a></li>
+                        <li><a asp-action="Index"  asp-route-id="">Todas</a></li>
+                        @foreach (var item in dbContext.Categoria.ToList())
+                        {
+                        <li><a asp-action="Index" class="text-capitalize"  asp-route-id="@item.Id">@item.Nombre</a></li>
+
+                        }
                     </ul>
                 </div>
             </div>
@@ -38,11 +39,12 @@
                     @foreach (var item in Model)
                     {
                         var user = UserManager.Users.Where(x => x.Id == item.AppUserId).FirstOrDefault();
-                        var img = item.Imagen.FirstOrDefault();
+                        var img = item.Imagen.First();
 
                     <div class="row">
                         <div class="col-lg-4 col-md-4">
                             <div class="post" style="background-image:url(../images/Anuncios/@img.NombreArchivo)">
+                                @*<img src="~/images/Anuncios/@img.NombreArchivo" alt="alternate text" />*@
                                 <div class="post-info">
                                     <span>@item.Titulo</span>
                                     <span>RD$ @item.PrecioVenta</span>
