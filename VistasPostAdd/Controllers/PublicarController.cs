@@ -55,6 +55,7 @@ namespace VistasPostAdd.Controllers
                     Estado = model.Estado,
                     FechaPublicaccion = DateTime.Now,
                     Bloqueado = false,
+                    CategoriaId = model.Categoria,
                     AppUserId = UserId
                 };
 

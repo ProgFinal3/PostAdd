@@ -4,6 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
+@inject AppDbContex dbContex
+@{ 
+    var categoria = dbContex.Categoria.ToList();
+}
+
 <div class="row">
     <div class="col-lg-12">
         <form asp-action="Create" id="form-pub" method="post" enctype="multipart/form-data">
@@ -41,13 +46,11 @@
                         <label for="Categoria">Categoria:</label>
                         <select name="Categoria" id="Categoria">
                             <option value="0">Seleccionar categoria</option>
-                            <option value="0">Hogar</option>
-                            <option value="0">Vehículos</option>
-                            <option value="0">Moda y Belleza</option>
-                            <option value="0">Derpotes y Entretenimiento</option>
-                            <option value="0">Electrónica</option>
-                            <option value="0">Negocios y servicios</option>
-                            <option value="0">Otros</option>
+                            @foreach (var item in categoria)
+                            {
+                            <option value="@item.Id">@item.Nombre</option>
+                            }
+
                         </select>
 
                         <label asp-for="Descripcion">Descripción</label>

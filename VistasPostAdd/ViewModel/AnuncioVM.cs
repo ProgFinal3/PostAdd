@@ -20,6 +20,8 @@ namespace VistasPostAdd.ViewModel
         [Required]
         [StringLength(10)]
         public string Estado { get; set; }
+        [Required]
+        public int Categoria { get; set; }
 
     }
 }

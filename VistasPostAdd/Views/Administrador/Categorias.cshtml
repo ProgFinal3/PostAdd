@@ -1,6 +1,8 @@
-﻿@{
+﻿@model IEnumerable<PostAds.Models.Categoria>
+@{
     ViewData["Title"] = "Usuarios";
 }
+
 
 <div class="row">
     <div class="col-lg-12">
@@ -19,6 +21,10 @@
                         <div class="col-lg-12">
                             <div class="ads-blocked-page">
                                 <span>Categorias</span>
+                                <form asp-action="CreateCategoria" method="post">
+                                    <input type="text" class="form-control" name="Categoria" value="" />
+                                    <input type="submit" class="btn btn-primary" value="Crear Categoria" />
+                                </form>
                                 <div class="pre-scrollable" style="height:100vh">
                                     <table class="table">
                                         <tr>
@@ -26,11 +32,15 @@
                                             <th>Categoria</th>
                                             <th>Eliminar</th>
                                         </tr>
+                                        @foreach (var item in Model)
+                                        {
                                         <tr>
-                                            <td>1</td>
-                                            <td>Categoria</td>
-                                            <td><a class="btn btn-danger" asp-action="DeletePublicaciones" asp-route-id="">Eliminar</a></td>
+                                            <td>@item.Id</td>
+                                            <td>@item.Nombre</td>
+                                            <td><a class="btn btn-danger" asp-action="DeleteCategoria" asp-route-id="@item.Id">Eliminar</a></td>
                                         </tr>
+
+                                        }
                                     </table>
                                 </div>
                             </div>

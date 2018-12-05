@@ -42,10 +42,7 @@ namespace VistasPostAdd.Controllers
             return View(dbContex.Anuncio.ToList());
         }
 
-        public ActionResult Categorias()
-        {
-            return View();
-        }
+
 
         public ActionResult DeletePublicaciones(int id)
         {
@@ -105,6 +102,36 @@ namespace VistasPostAdd.Controllers
             return RedirectToAction("Usuarios");
             }
             return RedirectToAction("Usuarios");
+        }
+
+        public ActionResult Categorias()
+        {
+            return View(dbContex.Categoria.ToList());
+        }
+
+        [HttpPost]
+        public IActionResult CreateCategoria(string Categoria)
+        {
+            if (Categoria != null)
+            {
+                var cat = new Categoria { Nombre = Categoria };
+                dbContex.Categoria.Add(cat);
+                dbContex.SaveChanges();
+            }
+            
+            return RedirectToAction("Categorias");
+        }
+
+        public IActionResult DeleteCategoria(int id)
+        {
+            if (id != 0)
+            {
+                var cat = dbContex.Categoria.Where(x => x.Id == id).First();
+                dbContex.Categoria.Remove(cat);
+                dbContex.SaveChanges();
+            }
+
+            return RedirectToAction("Categorias");
         }
 
     }

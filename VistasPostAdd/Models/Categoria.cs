@@ -11,6 +11,6 @@ namespace PostAds.Models
         public string Nombre { get; set; }
 
         //Relationship
-        public int AnuncioId { get; set; }
+        public Anuncio Anuncios { get; set; }
     }
 }
