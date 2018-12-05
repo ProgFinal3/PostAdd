@@ -9,7 +9,7 @@
                 <div class="admin">
                     <span>Menu Administrador</span>
                     <ul>
-                       @Html.Partial("_IndexAdminPartial")
+                       <partial name="_IndexAdminPartial">
                     </ul>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                         <div class="col-lg-12">
                             <div class="ads-blocked">
                                 <span>Anuncios</span>
-                                <div class="pre-scrollable">
+                                <div class="pre-scrollable" style="height:150px">
                                     <table class="table">
                                         <tr>
                                             <th>Id</th>
@@ -63,7 +63,7 @@
                         <div class="col-lg-12">
                             <div class="user-blocked">
                                 <span>Usuarios</span>
-                                 <div class="pre-scrollable">
+                                 <div class="pre-scrollable" style="height:150px">
                                      <table class="table">
                                         <tr>
                                             <th>Nombre</th>

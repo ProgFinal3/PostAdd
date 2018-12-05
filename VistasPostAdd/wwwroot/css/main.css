@@ -405,7 +405,7 @@ span[id$="-error"], span .field-validation-error {
     width: 90%;
     margin: 10% auto;
     background-color: cornflowerblue;
-    padding: 15%; 
+    padding: 10% 0 10% 0; 
 }
 .contador span {
     display: block;
@@ -419,6 +419,10 @@ span[id$="-error"], span .field-validation-error {
     font-size: 2em;
     font-weight: 600;
 }
-.pre-scrollable {
-    height: 150px;
+.ads-blocked-page span{
+    display: block;
+    padding: 1%;
+    font-size: 2em;
+    font-weight: 600;
 }
+

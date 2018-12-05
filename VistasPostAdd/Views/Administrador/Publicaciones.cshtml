@@ -6,19 +6,55 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3 col-md-3" style="padding-left:0">
                 <div class="admin">
                     <span>Administrador</span>
                     <ul>
-                       <li><input type="submit" name="Publicaciones" value="Publicaciones" /></li>
-                       <li><input type="submit" name="Usuarios" value="Usuarios" /></li>
-                       <li><input type="submit" name="Configuracion" value="Configuracion" /></li>
+                       <partial name="_IndexAdminPartial">
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-9 col-md-9">
                 <div class="admin-root">
-                    
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="contador">
+                                <span><i class="fa fa-user"></i> 500 Publicaciones</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contador">
+                                <span><i class="fa fa-lock"></i> 5 Bloqueadas</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ads-blocked-page">
+                                <span>Publicaciones</span>
+                                <div class="pre-scrollable" style="height:100vh">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Poster</th>
+                                            <th>Titulo</th>
+                                            <th>Eliminar</th>
+                                            <th>Bloquear</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Smith</td>
+                                            <td>Srogaa</td>
+                                            <td><a class="btn btn-danger" asp-action="DeleteUser" asp-route-id="">Eliminar</a></td>
+                                            <td><a class="btn btn-warning" asp-action="BlockedUser" asp-route-id="">Bloquear</a></td>
+                                        </tr>
+                                    </table>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
