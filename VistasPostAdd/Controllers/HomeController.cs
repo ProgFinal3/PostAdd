@@ -29,8 +29,7 @@ namespace VistasPostAdd.Controllers
             return View(Adsget);
         }
 
-
-        public IActionResult Datalle()
+        public IActionResult Detalle()
         {
             return View();
         }

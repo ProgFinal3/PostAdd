@@ -527,3 +527,30 @@ span[id$="-error"], span .field-validation-error {
     padding-left: 3%;
     color: rgba(0,0,0,.8);
 }
+#img-detalle-1, #img-detalle-2 {
+    background-size: cover;
+    background-repeat: no-repeat;
+    float: left;
+    transform: translateY(50%);
+    width: 50%;
+    height: 40vh;
+}
+#img-detalle-p-1 {
+    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 40vh;
+}
+#img-detalle-p-2, #img-detalle-p-3 {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+    width: 49.9%;
+    height: 40vh;
+}
+#img-detalle-t {
+    align-items: center;
+}
