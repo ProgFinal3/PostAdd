@@ -50,7 +50,7 @@
                                             <td>@item.Titulo</td>
                                             <td>@item.PrecioVenta</td>
                                             <td>@item.FechaPublicaccion.ToString("dd/MM/yyyy H:mm")</td>
-                                            <td><a class="btn btn-primary" asp-controller="Publicar" asp-action="Index" asp-route-id="@item.Id">Editar</a></td>
+                                            <td><a class="btn btn-primary" asp-controller="Publicar" asp-action="Index">Editar</a></td>
                                             <td><a class="btn btn-danger" asp-action="DeletePublicaciones" asp-route-id="@item.Id">Eliminar</a></td>
                                         </tr>
 
