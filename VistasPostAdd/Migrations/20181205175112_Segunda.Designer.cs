@@ -10,8 +10,8 @@ using VistasPostAdd.Models;
 namespace VistasPostAdd.Migrations
 {
     [DbContext(typeof(AppDbContex))]
-    [Migration("20181205102157_Secound")]
-    partial class Secound
+    [Migration("20181205175112_Segunda")]
+    partial class Segunda
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -157,8 +157,7 @@ namespace VistasPostAdd.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.HasIndex("CategoriaId")
-                        .IsUnique();
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Anuncio");
                 });
@@ -306,8 +305,8 @@ namespace VistasPostAdd.Migrations
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("PostAds.Models.Categoria")
-                        .WithOne("Anuncios")
-                        .HasForeignKey("PostAds.Models.Anuncio", "CategoriaId")
+                        .WithMany("Anuncio")
+                        .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

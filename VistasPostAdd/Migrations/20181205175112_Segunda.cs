@@ -2,7 +2,7 @@
 
 namespace VistasPostAdd.Migrations
 {
-    public partial class Secound : Migration
+    public partial class Segunda : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,8 +27,7 @@ namespace VistasPostAdd.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Anuncio_CategoriaId",
                 table: "Anuncio",
-                column: "CategoriaId",
-                unique: true);
+                column: "CategoriaId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Anuncio_Categoria_CategoriaId",

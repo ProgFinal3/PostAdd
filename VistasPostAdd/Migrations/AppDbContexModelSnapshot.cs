@@ -15,7 +15,7 @@ namespace VistasPostAdd.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -155,8 +155,7 @@ namespace VistasPostAdd.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.HasIndex("CategoriaId")
-                        .IsUnique();
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Anuncio");
                 });
@@ -304,8 +303,8 @@ namespace VistasPostAdd.Migrations
                         .HasForeignKey("AppUserId");
 
                     b.HasOne("PostAds.Models.Categoria")
-                        .WithOne("Anuncios")
-                        .HasForeignKey("PostAds.Models.Anuncio", "CategoriaId")
+                        .WithMany("Anuncio")
+                        .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
