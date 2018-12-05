@@ -61,7 +61,7 @@ namespace VistasPostAdd.Controllers
                     AppUserId = UserId
                 };
 
-                dbContex.Add(anuncio);
+                dbContex.Anuncio.Add(anuncio);
                 dbContex.SaveChanges();
 
                 //Obteniendo Id Anuncio actual y guardando imagenes en tabla y carpetas
