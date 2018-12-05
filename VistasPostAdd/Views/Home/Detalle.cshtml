@@ -1,6 +1,10 @@
-﻿
+﻿@model PostAds.Models.Anuncio
 @{
     ViewData["Title"] = "Detalle";
+    var imgCount = Model.Imagen.Count;
+    int num = 1;
+
+
 }
 
 <div class="row">
@@ -8,53 +12,83 @@
         <div class="detalle">
             <div class="row">
                 <div class="col-lg-8">
-                    <!-- Si es una sola imagen 
-                    <div class="img-detalle" style="background-image:url(../images/Anuncios/5.jpg)">
-                        <span>Id anuncio</span>
-                    </div>
-                    -->
 
-                    <!-- Si son 2 imagenes -->
+
+                    @if (imgCount == 1)
+                    {
+                        @foreach (var item in Model.Imagen)
+                        {
+                            <!-- Si es 1 sola imagen -->
+                            <div class="img-detalle" style="background-image:url(../../images/Anuncios/@item.NombreArchivo)">
+                                <span>Id anuncio: @item.Id</span>
+                            </div>
+                        }
+                    }
+                    else if (imgCount == 2)
+                    {
+                        @foreach (var item in Model.Imagen)
+                        {
+                            <!-- Si es 2 sola imagen -->
+                            <div class="img-detalle-@num" style="background-image:url(../../images/Anuncios/@item.NombreArchivo)">
+                            </div>
+                            num++;
+                        }
+                    }
+                    else if (imgCount == 3)
+                    {
+                        @foreach (var item in Model.Imagen)
+                        {
+                            <!-- Si es 3 sola imagen -->
+                            <div class="img-detalle-p-@num" style="background-image:url(../../images/Anuncios/@item.NombreArchivo)">
+                            </div>
+                            num++;
+                        }
+                    }
+
+
+
+
+                    @*<!-- Si son 2 imagenes -->
 
                     <div class="img-detalle">
                         <span>Id anuncio</span>
                         <div id="img-detalle-1" style="background-image:url(../images/Anuncios/5.jpg)">
-                            
+
                         </div>
                         <div id="img-detalle-2" style="background-image:url(../images/Anuncios/5.jpg)">
-                            
+
                         </div>
                     </div>
-                    
 
-                    <!-- Si son 2 imagenes 
-                    <div class="img-detalle">
-                        <span>Id anuncio</span>
-                        <div id="img-detalle-p-1" style="background-image:url(../images/Anuncios/5.jpg)">
-                            
-                        </div>
-                        <div id="img-detalle-t">
-                            <div id="img-detalle-p-2" style="background-image:url(../images/Anuncios/5.jpg)">
-    
-                            </div>
-                            <div id="img-detalle-p-3" style="background-image:url(../images/Anuncios/5.jpg)">
 
-                            </div>
-                        </div>
-                    </div>
-                    -->
+                    <!-- Si son 2 imagenes
+    <div class="img-detalle">
+        <span>Id anuncio</span>
+        <div id="img-detalle-p-1" style="background-image:url(../images/Anuncios/5.jpg)">
+
+        </div>
+        <div id="img-detalle-t">
+            <div id="img-detalle-p-2" style="background-image:url(../images/Anuncios/5.jpg)">
+
+            </div>
+            <div id="img-detalle-p-3" style="background-image:url(../images/Anuncios/5.jpg)">
+
+            </div>
+        </div>
+    </div>
+    -->*@
 
                 </div>
                 <div class="col-lg-4">
                     <div class="data-detalle">
                         <span class="t-data">Titulo:</span>
-                        <span class="c-data">Motocicleta</span>
+                        <span class="c-data">@Model.Titulo</span>
                         <span class="t-data">Precio:</span>
-                        <span class="c-data">RD$ 2,000</span>
+                        <span class="c-data">RD$ @Model.PrecioVenta</span>
                         <span class="t-data">Fecha:</span>
-                        <span class="c-data">12/12/2018 12:30:30</span>
+                        <span class="c-data">@Model.FechaPublicaccion.ToString("dd/MM/yyyy H:mm")</span>
                         <span class="t-data">Descripción:</span>
-                        <span class="c-data">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis alias blanditiis repudiandae inventore necessitatibus, laborum repellendus ut harum commodi vitae tenetur molestias natus modi aspernatur rem facilis quaerat pariatur totam!</span>
+                        <span class="c-data">@Model.Descripcion</span>
                     </div>
                 </div>
             </div>

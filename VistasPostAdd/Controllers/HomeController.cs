@@ -29,15 +29,11 @@ namespace VistasPostAdd.Controllers
             return View(Adsget);
         }
 
-        public IActionResult Detalle()
+        public IActionResult Detalle(int? id)
         {
-            return View();
+            var ads = dbContex.Anuncio.Include(x => x.Imagen).Where(x => x.Id == id).First();
+            return View(ads);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
