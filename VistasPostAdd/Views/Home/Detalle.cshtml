@@ -20,63 +20,37 @@
                         {
                             <!-- Si es 1 sola imagen -->
                             <div class="img-detalle" style="background-image:url(../../images/Anuncios/@item.NombreArchivo)">
-                                <span>Id anuncio: @item.Id</span>
+                                
                             </div>
                         }
                     }
                     else if (imgCount == 2)
                     {
+                        <div class="img-detalle">
                         @foreach (var item in Model.Imagen)
                         {
                             <!-- Si es 2 sola imagen -->
-                            <div class="img-detalle-@num" style="background-image:url(../../images/Anuncios/@item.NombreArchivo)">
+                            
+                            <div id="img-detalle-@num" style="background-image:url(../../images/Anuncios/@item.NombreArchivo)">
                             </div>
                             num++;
                         }
+                        </div>
                     }
                     else if (imgCount == 3)
                     {
+                        <div class="img-detalle">
+                        
                         @foreach (var item in Model.Imagen)
                         {
                             <!-- Si es 3 sola imagen -->
-                            <div class="img-detalle-p-@num" style="background-image:url(../../images/Anuncios/@item.NombreArchivo)">
+                            
+                            <div id="img-detalle-p-@num" style="background-image:url(../../images/Anuncios/@item.NombreArchivo)">
                             </div>
                             num++;
                         }
+                        </div>
                     }
-
-
-
-
-                    @*<!-- Si son 2 imagenes -->
-
-                    <div class="img-detalle">
-                        <span>Id anuncio</span>
-                        <div id="img-detalle-1" style="background-image:url(../images/Anuncios/5.jpg)">
-
-                        </div>
-                        <div id="img-detalle-2" style="background-image:url(../images/Anuncios/5.jpg)">
-
-                        </div>
-                    </div>
-
-
-                    <!-- Si son 2 imagenes
-    <div class="img-detalle">
-        <span>Id anuncio</span>
-        <div id="img-detalle-p-1" style="background-image:url(../images/Anuncios/5.jpg)">
-
-        </div>
-        <div id="img-detalle-t">
-            <div id="img-detalle-p-2" style="background-image:url(../images/Anuncios/5.jpg)">
-
-            </div>
-            <div id="img-detalle-p-3" style="background-image:url(../images/Anuncios/5.jpg)">
-
-            </div>
-        </div>
-    </div>
-    -->*@
 
                 </div>
                 <div class="col-lg-4">

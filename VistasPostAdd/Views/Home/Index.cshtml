@@ -35,16 +35,16 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                @* card para anuncio *@
+                <div class="row"></div>
                     @foreach (var item in Model)
                     {
                         var user = UserManager.Users.Where(x => x.Id == item.AppUserId).FirstOrDefault();
                         var img = item.Imagen.First();
 
-                    <div class="row">
+                    
                         <div class="col-lg-4 col-md-4">
                             <div class="post" style="background-image:url(../images/Anuncios/@img.NombreArchivo)">
-                                @*<img src="~/images/Anuncios/@img.NombreArchivo" alt="alternate text" />*@
+                                
                                 <div class="post-info">
                                     <span>@item.Titulo</span>
                                     <span>RD$ @item.PrecioVenta</span>
@@ -53,9 +53,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
                    }
+                </div>
             </div>
         </div>
     </div>

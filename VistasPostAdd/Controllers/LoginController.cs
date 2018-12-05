@@ -41,8 +41,7 @@ namespace VistasPostAdd.Controllers
             }
             return RedirectToAction("Index", model);
         }
-
-        [HttpPost]
+        
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {

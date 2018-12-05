@@ -503,6 +503,9 @@ span[id$="-error"], span .field-validation-error {
 }
 .img-detalle {
     height: 80vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 .img-detalle span {
     position: absolute;
@@ -528,8 +531,9 @@ span[id$="-error"], span .field-validation-error {
     color: rgba(0,0,0,.8);
 }
 #img-detalle-1, #img-detalle-2 {
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
     float: left;
     transform: translateY(50%);
     width: 50%;
@@ -537,20 +541,19 @@ span[id$="-error"], span .field-validation-error {
 }
 #img-detalle-p-1 {
     display: block;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     width: 50%;
+    margin: auto;
     height: 40vh;
 }
 #img-detalle-p-2, #img-detalle-p-3 {
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
     float: left;
-    width: 49.9%;
+    width: 50%;
     height: 40vh;
-}
-#img-detalle-t {
-    align-items: center;
 }
