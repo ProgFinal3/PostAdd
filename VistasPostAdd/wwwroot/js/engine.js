@@ -6,7 +6,7 @@
 $(document).ready(function(){
 
     var foot = $('footer')[0];
-    if(location.href.indexOf('Administrador') > -1){
+    if(location.href.indexOf('Administrador') > -1 || location.href.indexOf('Usuario') > -1){
         foot.style.display = "none";
     }
 
@@ -205,6 +205,24 @@ $(document).ready(function(){
             formpub.submit();
                   
         }
+    }
+
+    var btnedit = $('#btn-edit')[0];
+    var btnedit2 = $('#btn-edit-2')[0];
+    var inputs = document.querySelectorAll('input');
+    if(btnedit){
+        btnedit.addEventListener('click',(e)=>{
+            
+            preventDefaults(e);
+              
+            for (let i = 1; i < inputs.length; i++) {
+                inputs[i].readOnly = false;
+                inputs[i].disabled = false;
+            }
+
+            btnedit.style.display = "none";
+            btnedit2.style.display = "block";
+        });
     }
 
     /*  */

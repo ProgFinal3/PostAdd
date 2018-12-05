@@ -3,5 +3,60 @@
     ViewData["Title"] = "Perfil";
 }
 
-<h2>Perfil</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-3 col-md-3" style="padding-left:0">
+                <div class="admin">
+                    <span>Perfil</span>
+                    <ul>
+                       <partial name="_IndexUserPartial">
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9">
+                <div class="admin-root">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form action="">
+                                <div class="perfil">
+                                    <span><i class="fa fa-user-o"></i> Fulanito de tal</span>
+                                </div>
+                                <div class="perfil-details">
+                                    <div class="form-g">
+                                        <div class="input-form">
+                                            <label for="nombre">Nombre:</label>
+                                            <input type="text" id="nombre" value="walter" readonly disabled>
+                                        </div>
+                                        <div class="input-form">
+                                            <label for="apellido">Apellido:</label>
+                                            <input type="text" id="apellido" value="white" readonly disabled>
+                                        </div>
+                                    </div>
+                                    <div class="input-form">
+                                        <label for="correo">Correo:</label>
+                                        <input type="text" id="correo" value="white@white.com" readonly disabled>
+                                    </div>
+                                    <div class="form-g">
+                                        <div class="input-form">
+                                            <label for="contrasenaa">Contraseña actual:</label>
+                                            <input type="password" id="contrasenaa" value="" readonly disabled>
+                                        </div>
+                                        <div class="input-form">
+                                            <label for="contrasenan">Contraseña nueva:</label>
+                                            <input type="password" id="constrasenan" value="" readonly disabled>
+                                        </div>
+                                    </div>
+                                    <a href="#" id="btn-edit">Editar</a>
+                                    <a id="btn-edit-2" asp-action="EditUser" asp-controller="Registro">Enviar</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
