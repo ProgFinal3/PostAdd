@@ -6,7 +6,7 @@
 @inject AppDbContex dbContex
 @{ 
     var categoria = dbContex.Categoria.ToList();
-    var Ads = (PostAds.Models.Anuncio)ViewBag.Ads;
+    var Ads = ViewBag.Ads;
 }
 
 <div class="row">
