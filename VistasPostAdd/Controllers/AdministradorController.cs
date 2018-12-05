@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,12 +18,18 @@ namespace VistasPostAdd.Controllers
         private readonly AppDbContex dbContex;
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
+        private readonly IHostingEnvironment env;
 
-        public AdministradorController(AppDbContex dbContex, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AdministradorController(
+            AppDbContex dbContex, 
+            UserManager<AppUser> userManager, 
+            SignInManager<AppUser> signInManager, 
+            IHostingEnvironment env)
         {
             this.dbContex = dbContex;
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.env = env;
         }
         // GET: Administrador
         public ActionResult Index()
@@ -41,13 +49,21 @@ namespace VistasPostAdd.Controllers
 
         public ActionResult DeletePublicaciones(int id)
         {
-            if (id != 0)
+        if (id != 0)
+        {
+
+            var Ads = dbContex.Anuncio.Include(x => x.Imagen).Where(x => x.Id == id).First();
+            foreach (var item in Ads.Imagen)
             {
-                var Ads = dbContex.Anuncio.Where(x => x.Id == id).First();
-                dbContex.Anuncio.Remove(Ads);
-                dbContex.SaveChanges();
-                return RedirectToAction("Publicaciones");
+                var filename = Path.Combine(env.WebRootPath + "/images/Anuncios/", item.NombreArchivo);
+                System.IO.File.Delete(filename);
+
             }
+
+            dbContex.Anuncio.Remove(Ads);
+            dbContex.SaveChanges();
+            return RedirectToAction("Publicaciones");
+        }
             return RedirectToAction("Publicaciones");
         }
 

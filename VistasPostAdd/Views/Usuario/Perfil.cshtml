@@ -1,4 +1,4 @@
-﻿
+﻿@model PostAds.Models.AppUser
 @{
     ViewData["Title"] = "Perfil";
 }
@@ -18,7 +18,7 @@
                 <div class="admin-root">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="">
+                            <form asp-action="UpdatePerfil" asp-route-id="@Model.Id" asp-controller="Usuario" method="post">
                                 <div class="perfil">
                                     <span><i class="fa fa-user-o"></i> Fulanito de tal</span>
                                 </div>
@@ -26,29 +26,29 @@
                                     <div class="form-g">
                                         <div class="input-form">
                                             <label for="nombre">Nombre:</label>
-                                            <input type="text" id="nombre" value="walter" readonly disabled>
+                                            <input type="text" id="nombre" name="Nombre" value="@Model.Nombre" readonly disabled>
                                         </div>
                                         <div class="input-form">
                                             <label for="apellido">Apellido:</label>
-                                            <input type="text" id="apellido" value="white" readonly disabled>
+                                            <input type="text" id="apellido" name="Apellido" value="@Model.Apellido" readonly disabled>
                                         </div>
                                     </div>
                                     <div class="input-form">
                                         <label for="correo">Correo:</label>
-                                        <input type="text" id="correo" value="white@white.com" readonly disabled>
+                                        <input type="text" id="correo" name="Email" value="@Model.Email" readonly disabled>
                                     </div>
                                     <div class="form-g">
                                         <div class="input-form">
                                             <label for="contrasenaa">Contraseña actual:</label>
-                                            <input type="password" id="contrasenaa" value="" readonly disabled>
+                                            <input type="password" id="contrasenaa" name="Password" value="" readonly disabled>
                                         </div>
                                         <div class="input-form">
                                             <label for="contrasenan">Contraseña nueva:</label>
-                                            <input type="password" id="constrasenan" value="" readonly disabled>
+                                            <input type="password" id="constrasenan" name="NewPassword" value="" readonly disabled>
                                         </div>
                                     </div>
                                     <a href="#" id="btn-edit">Editar</a>
-                                    <a id="btn-edit-2" asp-action="EditUser" asp-controller="Registro">Enviar</a>
+                                    <button type="submit" id="btn-edit-2" >Enviar</button>
                                 </div>
                             </form>
                         </div>

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<PostAds.Models.Anuncio>
 @{
     ViewData["Title"] = "Publicaciones";
 }
@@ -19,12 +19,12 @@
                     <div class="row"> 
                         <div class="col-lg-6">
                             <div class="contador">
-                                <span><i class="fa fa-plus-circle"></i> 5 Publicaciones</span>
+                                <span><i class="fa fa-plus-circle"></i> @Model.Count() Publicaciones</span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contador">
-                                <span><i class="fa fa-plus-circle"></i> <i class="fa fa-lock"></i> 5 Bloqueadas</span>
+                                <span><i class="fa fa-plus-circle"></i> <i class="fa fa-lock"></i> @Model.Where(x => x.Bloqueado == true).Count() Bloqueadas</span>
                             </div>
                         </div>
                     </div>
@@ -43,14 +43,18 @@
                                             <th>Editar</th>
                                             <th>Eliminar</th>
                                         </tr>
+                                        @foreach (var item in Model)
+                                        {
                                         <tr>
-                                            <td>1</td>
-                                            <td>Pene</td>
-                                            <td>2000</td>
-                                            <td>12/12/2018 12:30:30</td>
-                                            <td><a class="btn btn-primary" asp-action="EditAdd" asp-route-id="">Editar</a></td>
-                                            <td><a class="btn btn-danger" asp-action="DeleteAdd" asp-route-id="">Eliminar</a></td>
+                                            <td>@item.Id</td>
+                                            <td>@item.Titulo</td>
+                                            <td>@item.PrecioVenta</td>
+                                            <td>@item.FechaPublicaccion.ToString("dd/MM/yyyy H:mm")</td>
+                                            <td><a class="btn btn-primary" asp-controller="Publicar" asp-action="Index" asp-route-id="@item.Id">Editar</a></td>
+                                            <td><a class="btn btn-danger" asp-action="DeletePublicaciones" asp-route-id="@item.Id">Eliminar</a></td>
                                         </tr>
+
+                                        }
                                     </table>
                                 </div> 
                             </div>

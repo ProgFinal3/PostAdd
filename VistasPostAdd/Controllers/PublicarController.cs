@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PostAds.Models;
 using VistasPostAdd.Models;
 using VistasPostAdd.ViewModel;
@@ -28,6 +29,7 @@ namespace VistasPostAdd.Controllers
         // GET: Publicar
         public ActionResult Index()
         {
+
             return View();
         }
 
