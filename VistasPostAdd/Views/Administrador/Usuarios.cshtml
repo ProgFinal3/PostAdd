@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<PostAds.Models.AppUser>
 @{
     ViewData["Title"] = "Usuarios";
 }
@@ -20,12 +20,12 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="contador">
-                                <span><i class="fa fa-user"></i> 500 Usuarios</span>
+                                <span><i class="fa fa-user"></i> @Model.Count() Usuarios</span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="contador">
-                                <span><i class="fa fa-lock"></i> 5 Bloqueados</span>
+                                <span><i class="fa fa-lock"></i> @Model.Where(x => x.Bloqueado == true).Count() Bloqueados</span>
                             </div>
                         </div>
                     </div>
@@ -44,14 +44,19 @@
                                             <th>Eliminar</th>
                                             <th>Bloquear</th>
                                         </tr>
+                                        @foreach (var item in Model)
+                                        {
+                                            var bloqueo = item.Bloqueado == false ? "Bloquear" : "Desbloquear";
                                         <tr>
-                                            <td>Jill</td>
-                                            <td>Smith</td>
-                                            <td>jill@@jilmail.com</td>
-                                            <td>50</td>
-                                            <td><a class="btn btn-danger" asp-action="DeleteUser" asp-route-id="">Eliminar</a></td>
-                                            <td><a class="btn btn-warning" asp-action="BlockedUser" asp-route-id="">Bloquear</a></td>
+                                            <td>@item.Nombre</td>
+                                            <td>@item.Apellido</td>
+                                            <td>@item.Email</td>
+                                            <td>@item.Anuncios.Count()</td>
+                                            <td><a class="btn btn-danger" asp-action="DeleteUsuario" asp-route-id="@item.Id">Eliminar</a></td>
+                                            <td><a class="btn btn-warning" asp-action="LockUsuario" asp-route-id="@item.Id">@bloqueo</a></td>
                                         </tr>
+
+                                        }
                                     </table>
                                 </div> 
                             </div>

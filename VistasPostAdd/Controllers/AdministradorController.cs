@@ -15,11 +15,13 @@ namespace VistasPostAdd.Controllers
     {
         private readonly AppDbContex dbContex;
         private readonly UserManager<AppUser> userManager;
+        private readonly SignInManager<AppUser> signInManager;
 
-        public AdministradorController(AppDbContex dbContex, UserManager<AppUser> userManager)
+        public AdministradorController(AppDbContex dbContex, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             this.dbContex = dbContex;
             this.userManager = userManager;
+            this.signInManager = signInManager;
         }
         // GET: Administrador
         public ActionResult Index()
@@ -40,9 +42,9 @@ namespace VistasPostAdd.Controllers
                 var Ads = dbContex.Anuncio.Where(x => x.Id == id).First();
                 dbContex.Anuncio.Remove(Ads);
                 dbContex.SaveChanges();
-                return RedirectToAction();
+                return RedirectToAction("Publicaciones");
             }
-            return RedirectToAction();
+            return RedirectToAction("Publicaciones");
         }
 
         public IActionResult LockPublicaciones(int id)
@@ -52,14 +54,14 @@ namespace VistasPostAdd.Controllers
                 var user = dbContex.Anuncio.Where(x => x.Id == id).First();
                 user.Bloqueado = !user.Bloqueado;
                 dbContex.SaveChanges();
-                return RedirectToAction();
+                return RedirectToAction("Publicaciones");
             }
-            return RedirectToAction();
+            return RedirectToAction("Publicaciones");
         }
 
         public ActionResult Usuarios()
         {
-            return View(dbContex.Users.ToList());
+            return View(dbContex.Users.Include(x => x.Anuncios).ToList());
         }
 
         public IActionResult LockUsuario(string id)
@@ -69,9 +71,9 @@ namespace VistasPostAdd.Controllers
                 var user = dbContex.Users.Where(x => x.Id == id).First();
                 user.Bloqueado = !user.Bloqueado;
                 dbContex.SaveChanges();
-                return RedirectToAction();
+                return RedirectToAction("Usuarios");
             }
-            return RedirectToAction();
+            return RedirectToAction("Usuarios");
         }
 
         public async Task<IActionResult> DeleteUsuario(string id)
@@ -80,9 +82,9 @@ namespace VistasPostAdd.Controllers
             {
             var user = await userManager.FindByIdAsync(id);
             await userManager.DeleteAsync(user);
-            return RedirectToAction();
+            return RedirectToAction("Usuarios");
             }
-            return RedirectToAction();
+            return RedirectToAction("Usuarios");
         }
 
         public ActionResult Configuracion()

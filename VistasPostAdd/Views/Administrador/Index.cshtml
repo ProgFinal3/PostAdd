@@ -54,7 +54,7 @@
                                             <th>Titulo</th>
                                             <th>Precio</th>
                                         </tr>
-                                        @foreach (var item in dbContext.Anuncio.Where(x => x.Bloqueado == false).ToList())
+                                        @foreach (var item in dbContext.Anuncio.Where(x => x.Bloqueado == true).ToList())
                                         {
                                             var poster = dbContext.Users.Where(x => x.Id == item.AppUserId).First();
                                         <tr>
@@ -81,7 +81,7 @@
                                              <th>Correo</th>
                                              <th>Anuncios</th>
                                          </tr>
-                                         @foreach (var item in Model)
+                                         @foreach (var item in Model.Where(x => x.Bloqueado == true).ToList())
                                          {
                                          <tr>
                                              <td>@item.Nombre</td>
