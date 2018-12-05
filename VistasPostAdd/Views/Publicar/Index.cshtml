@@ -6,7 +6,6 @@
 @inject AppDbContex dbContex
 @{ 
     var categoria = dbContex.Categoria.ToList();
-    var Ads = (PostAds.Models.Anuncio)ViewBag.Ads;
 }
 
 <div class="row">
@@ -35,13 +34,13 @@
                         <div asp-validation-summary="All" class="text-danger"></div>
 
                         <label asp-for="Titulo">Titulo:</label>
-                        <input asp-for="Titulo" id="Titulo" name="Titulo" value="@Ads.Titulo" placeholder="Título del producto">
+                        <input asp-for="Titulo" id="Titulo" name="Titulo"  placeholder="Título del producto">
 
                         <label asp-for="PrecioVenta">Precio:</label>
-                        <input asp-for="PrecioVenta" id="PrecioVenta" name="PrecioVenta" value="@Ads.PrecioVenta" placeholder="Precio del producto">
+                        <input asp-for="PrecioVenta" id="PrecioVenta" name="PrecioVenta" placeholder="Precio del producto">
 
                         <label asp-for="Estado">Estado:</label>
-                        <input asp-for="Estado" id="Estado" name="Estado" value="@Ads.Estado" placeholder="Estado del producto">
+                        <input asp-for="Estado" id="Estado" name="Estado"  placeholder="Estado del producto">
 
                         <label for="Categoria">Categoria:</label>
                         <select name="Categoria" id="Categoria">
@@ -54,7 +53,7 @@
                         </select>
 
                         <label asp-for="Descripcion">Descripción</label>
-                        <textarea asp-for="Descripcion" id="Descripcion" name="Descripcion" placeholder="Descripción del producto" style="padding:2%" cols="50"  value="@Ads.Descripcion" rows="2">klskdlkdsd</textarea>
+                        <textarea asp-for="Descripcion" id="Descripcion" name="Descripcion" placeholder="Descripción del producto" style="padding:2%" cols="50"  rows="2">klskdlkdsd</textarea>
 
                         <input type="submit" id="btn-send" value="Publicar Articulo">
                     </div>
