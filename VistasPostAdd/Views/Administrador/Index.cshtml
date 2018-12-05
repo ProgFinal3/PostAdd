@@ -1,24 +1,24 @@
-﻿
 @{
     ViewData["Title"] = "Dashboard";
+    String vista = "_IndexAdminPartial";
 }
 
 <div class="row">
     <div class="col-lg-12">
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col-lg-3 col-md-3" style="padding-left:0">
                 <div class="admin">
                     <span>Menu Administrador</span>
                     <ul>
-                       <li><a href="#" id="publish">Publicaciones</a></li>
-                       <li><a href="#" id="users">Usuarios</a></li>
-                       <li><a href="#" id="config">Configuración</a></li>
+                       <li><a asp-action="Publicaciones">Publicaciones</a></li>
+                       <li><a asp-action="Usuarios">Usuarios</a></li>
+                       <li><a asp-action="Configuracion">Configuración</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-9 col-md-9">
                 <div class="admin-root">
-                    <iframe src="" id="admin-dash" frameborder="0" sandbox="allow-forms allow-same-origin allow-scripts"></iframe>
+                    
                 </div>
             </div>
         </div>

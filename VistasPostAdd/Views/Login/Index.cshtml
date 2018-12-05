@@ -9,8 +9,7 @@
         <div class="login">
             <span>Inicia sesión.</span>
             <div class="formulario">
-                <form asp-action="Login">
-
+                <form asp-action="Login" method="post" enctype="application/x-www-form-urlencoded">
                     <label asp-for="Email">Correo:</label>
                     <input asp-for="Email" id="Email" name="Email" placeholder="Correo">
 

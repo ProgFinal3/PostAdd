@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace VistasPostAdd.Controllers
 {
-    public class AdministradorController : Controller
+    public class UsuarioController : Controller
     {
-        // GET: Administrador
+        // GET: Usuario
         public ActionResult Index()
         {
             return View();
@@ -18,9 +18,8 @@ namespace VistasPostAdd.Controllers
         public ActionResult Publicaciones()
         {
             return View();
-
         }
-        public ActionResult Usuarios()
+        public ActionResult Perfil()
         {
             return View();
         }
@@ -29,6 +28,5 @@ namespace VistasPostAdd.Controllers
         {
             return View();
         }
-
     }
 }

@@ -5,6 +5,11 @@
 
 $(document).ready(function(){
 
+    var foot = $('footer')[0];
+    if(location.href.indexOf('Administrador') > -1){
+        foot.style.display = "none";
+    }
+
     /* LOGIN */ 
     
     var btnlogout = $('#btn-logout')[0];
@@ -63,25 +68,27 @@ $(document).ready(function(){
     var data = 0;
     var imgprod = [];
    
-        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-            div.addEventListener(eventName, preventDefaults, false);
-        });
-        div.addEventListener('drop', drop, false);
-        div.addEventListener('dragover',(e)=>{
-            div.style.color = "green";
-        });
-        div.addEventListener('dragleave',(e)=>{
-            div.style.color = "orange";
-        });
-        btnupload.addEventListener('click',(e)=>{
-            preventDefaults(e);
-            btnfiles.click();
-        });
-        btnfiles.addEventListener('change',(e)=>{
-            let file = btnfiles.files;
-            imgprod = file;
-            mostrarArchivo(file);
-        });
+        if (div) {
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                div.addEventListener(eventName, preventDefaults, false);
+            });
+            div.addEventListener('drop', drop, false);
+            div.addEventListener('dragover',(e)=>{
+                div.style.color = "green";
+            });
+            div.addEventListener('dragleave',(e)=>{
+                div.style.color = "orange";
+            });
+            btnupload.addEventListener('click',(e)=>{
+                preventDefaults(e);
+                btnfiles.click();
+            });
+            btnfiles.addEventListener('change',(e)=>{
+                let file = btnfiles.files;
+                imgprod = file;
+                mostrarArchivo(file);
+            });
+        }
     
 
     function drop(e) {
@@ -90,7 +97,7 @@ $(document).ready(function(){
         div.style.color = "rgba(0,0,0,.3)";
         mostrarArchivo(dt.files); 
     }
-
+ 
     function preventDefaults(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -187,36 +194,6 @@ $(document).ready(function(){
 
     }
 
-    var config = $('#config')[0];
-    var urlconfig = "~/configuracion.html";
-    var publish = $('#publish')[0];
-    var urlpublish = "~/publicaciones.html";
-    var users = $('#users')[0];
-    var urlusers = "~/usuarios.html";
-    var iframe = $('#admin-dash')[0];
-    if (iframe) {
-        iframe.seamless = true;
-    }
-
-    if (config) {
-        config.addEventListener('click',(e)=>{
-            preventDefaults(e);
-            iframe.src = urlconfig;
-        });
-    }
-    if (publish) {
-        publish.addEventListener('click',(e)=>{
-            preventDefaults(e);
-            iframe.src = urlpublish;
-        });
-    }
-    if (users) {
-        users.addEventListener('click',(e)=>{
-            preventDefaults(e);
-            iframe.src = urlusers;
-        });
-    }
-
     var btnsend = $('#btn-send')[0];
     var formpub = $('#form-pub')[0];
     if (btnsend) {
@@ -229,8 +206,6 @@ $(document).ready(function(){
                   
         }
     }
-
-    
 
     /*  */
 
