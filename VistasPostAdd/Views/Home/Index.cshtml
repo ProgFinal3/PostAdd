@@ -10,8 +10,15 @@
 @inject AppDbContex dbContext
 
 <div class="row">
-    <div class="col-lg-12">
-        <div id="banner"></div>
+    <div class="col-lg-12" style="padding:0">
+        <div id="banner">
+            <div class="banner-s">
+                <form asp-action="Index" method="get">
+                <input type="text" name="query" id="buscar" placeholder="Buscar">
+                <button type ="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -20,11 +27,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div id="categorias">
-                    <span>Buscar</span>
-                    <form asp-action="Index" method="get">
-                    <input type="text" name="query" placeholder="Buscar">
-                    <button type ="submit">Buscar</button>
-                    </form>
+                    
                     <span>Todas las categorías</span>
                     <ul>
                         <li><a asp-action="Index"  asp-route-id="">Todas</a></li>
@@ -45,7 +48,7 @@
 
                     
                         <div class="col-lg-4 col-md-4">
-                            <div class="post" style="background-image:url(../images/Anuncios/@img.NombreArchivo)">
+                            <div class="post" style="background-image:url(../../images/Anuncios/@img.NombreArchivo)">
                                 
                                 <div class="post-info">
                                     <span>@item.Titulo</span>
