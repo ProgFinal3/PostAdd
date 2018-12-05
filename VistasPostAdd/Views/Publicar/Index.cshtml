@@ -29,17 +29,29 @@
                         <span>Datos del producto</span>
                         <div asp-validation-summary="All" class="text-danger"></div>
 
-                        <label asp-for="Titulo"></label>
+                        <label asp-for="Titulo">Titulo:</label>
                         <input asp-for="Titulo" id="Titulo" name="Titulo" placeholder="Título del producto">
 
-                        <label asp-for="PrecioVenta"></label>
+                        <label asp-for="PrecioVenta">Precio:</label>
                         <input asp-for="PrecioVenta" id="PrecioVenta" name="PrecioVenta" placeholder="Precio del producto">
 
-                        <label asp-for="Estado"></label>
+                        <label asp-for="Estado">Estado:</label>
                         <input asp-for="Estado" id="Estado" name="Estado" placeholder="Precio del producto">
 
-                        <label asp-for="Descripcion"></label>
-                        <textarea asp-for="Descripcion" id="Descripcion" name="Descripcion" placeholder="Descripción del producto" style="padding:2%" cols="40" rows="5"></textarea>
+                        <label for="Categoria">Categoria:</label>
+                        <select name="Categoria" id="Categoria">
+                            <option value="0">Seleccionar categoria</option>
+                            <option value="0">Hogar</option>
+                            <option value="0">Vehículos</option>
+                            <option value="0">Moda y Belleza</option>
+                            <option value="0">Derpotes y Entretenimiento</option>
+                            <option value="0">Electrónica</option>
+                            <option value="0">Negocios y servicios</option>
+                            <option value="0">Otros</option>
+                        </select>
+
+                        <label asp-for="Descripcion">Descripción</label>
+                        <textarea asp-for="Descripcion" id="Descripcion" name="Descripcion" placeholder="Descripción del producto" style="padding:2%" cols="50" rows="2"></textarea>
 
                         <input type="submit" id="btn-send" value="Publicar Articulo">
                     </div>

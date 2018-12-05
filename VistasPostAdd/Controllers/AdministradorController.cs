@@ -32,7 +32,11 @@ namespace VistasPostAdd.Controllers
         public ActionResult Publicaciones()
         {
             return View(dbContex.Anuncio.ToList());
+        }
 
+        public ActionResult Categorias()
+        {
+            return View();
         }
 
         public ActionResult DeletePublicaciones(int id)
@@ -85,11 +89,6 @@ namespace VistasPostAdd.Controllers
             return RedirectToAction("Usuarios");
             }
             return RedirectToAction("Usuarios");
-        }
-
-        public ActionResult Configuracion()
-        {
-            return View();
         }
 
     }

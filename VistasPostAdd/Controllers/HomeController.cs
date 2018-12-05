@@ -22,6 +22,11 @@ namespace VistasPostAdd.Controllers
             return View(dbContex.Anuncio.Include(x => x.Imagen).ToList());
         }
 
+        public IActionResult Datalle()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

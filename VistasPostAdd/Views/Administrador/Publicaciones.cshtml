@@ -45,19 +45,12 @@
                                             <th>Eliminar</th>
                                             <th>Bloquear</th>
                                         </tr>
-                                        @foreach (var item in Model)
-                                        {
-                                            var poster = dbContext.Users.Where(x => x.Id == item.AppUserId).First();
-                                            var bloqueo = item.Bloqueado == false ? "Bloquear" : "Desbloquear";
                                             <tr>
-                                                <td>@item.Id</td>
-                                                <td>@poster.Nombre</td>
-                                                <td>@item.Titulo</td>
-                                                <td><a class="btn btn-danger" asp-action="DeletePublicaciones" asp-route-id="@item.Id">Eliminar</a></td>
-                                                <td><a class="btn btn-warning" asp-action="LockPublicaciones" asp-route-id="@item.Id">@bloqueo</a></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td><a class="btn btn-danger" asp-action="DeletePublicaciones" asp-route-id="">Eliminar</a></td>
                                             </tr>
-
-                                        }
                                     </table>
                                 </div>
                             </div>

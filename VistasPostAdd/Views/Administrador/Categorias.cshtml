@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-3 col-md-3" style="padding-left:0">
+                <div class="admin">
+                    <span>Categorias</span>
+                    <ul>
+                        <partial name="_IndexAdminPartial">
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9">
+                <div class="admin-root">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ads-blocked-page">
+                                <span>Categorias</span>
+                                <div class="pre-scrollable" style="height:100vh">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Categoria</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Categoria</td>
+                                            <td><a class="btn btn-danger" asp-action="DeletePublicaciones" asp-route-id="">Eliminar</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

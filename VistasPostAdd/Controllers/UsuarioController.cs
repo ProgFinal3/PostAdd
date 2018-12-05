@@ -24,9 +24,5 @@ namespace VistasPostAdd.Controllers
             return View();
         }
 
-        public ActionResult Configuracion()
-        {
-            return View();
-        }
     }
 }

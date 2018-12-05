@@ -35,43 +35,26 @@
             </div>
             <div class="col-lg-9">
                 @* card para anuncio *@
-                <div class="card-container">
                     @foreach (var item in Model)
                     {
                         var user = UserManager.Users.Where(x => x.Id == item.AppUserId).FirstOrDefault();
                         var img = item.Imagen.FirstOrDefault();
 
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
+                        <div class="col-lg-4 col-md-4">
                             <div class="post" style="background-image:url(../images/Anuncios/@img.NombreArchivo)">
                                 <div class="post-info">
                                     <span>@item.Titulo</span>
                                     <span>RD$ @item.PrecioVenta</span>
                                     <p>@item.Descripcion</p>
-                                    <a href="#">Ver más</a>
+                                    <a asp-action="Detalle" asp-controller="Home" asp-route-id="@item.Id">Ver más</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-6 col-md-6">
-                            <div class="post">
-                                <div class="post-info">
-                                    <span>Carro</span>
-                                    <span>$50,000</span>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                                    <a href="#">Ver más</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        </div>
+                    </div>
 
                    }
-
-
-
+            </div>
         </div>
-        </div>
-      </div>
     </div>
 </div>
