@@ -21,11 +21,17 @@ namespace VistasPostAdd.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Index(int? id)
+        public IActionResult Index(int? id, string query)
         {
+
             bool idcat (Anuncio x) => !id.HasValue || id.Value == x.CategoriaId;
             var Adsget = dbContex.Anuncio.Include(x => x.Imagen).Where(idcat).ToList();
-            id = null;
+            if (!String.IsNullOrEmpty(query))
+            {
+                Adsget = dbContex.Anuncio.Include(x => x.Imagen).Where(x=>x.Titulo.ToUpper().Contains(query.ToUpper())||x.Estado.ToUpper()
+                .Contains(query.ToUpper())||x.Descripcion.ToUpper().Contains(query.ToUpper())).ToList();
+
+            }
             return View(Adsget);
         }
 

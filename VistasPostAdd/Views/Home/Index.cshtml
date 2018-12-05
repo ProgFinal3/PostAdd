@@ -21,8 +21,10 @@
             <div class="col-lg-3">
                 <div id="categorias">
                     <span>Buscar</span>
-                    <input type="text" placeholder="Buscar">
-                    <button>Buscar</button>
+                    <form asp-action="Index" method="get">
+                    <input type="text" name="query" placeholder="Buscar">
+                    <button type ="submit">Buscar</button>
+                    </form>
                     <span>Todas las categorías</span>
                     <ul>
                         <li><a asp-action="Index"  asp-route-id="">Todas</a></li>
