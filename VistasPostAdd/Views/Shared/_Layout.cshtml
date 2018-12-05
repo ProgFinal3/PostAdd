@@ -1,74 +1,98 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - VistasPostAdd</title>
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/node_modules/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="~/css/main.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/main.min.css" asp-append-version="true" />
-    </environment>
-</head>
-<body> 
-     <nav id="nav-menu">
-        <a asp-action="Index" asp-controller="Home" id="nav-logo"><img src="~/images/logo.png" alt="PostAdd"></a>
-        <div id="menu">
-            <ul>
-                <li><a asp-action="Index"  asp-controller="Home">Inicio</a></li>
-                <li><a asp-action="Index" asp-controller="Publicar">Publicar</a></li>
-               @await Html.PartialAsync("_LoginPartial")
-            </ul>
-        </div>
-    </nav> 
-    <div class="container-fluid body-content">
-        @RenderBody()
-        <footer>
-            <div class="f-menu">
+﻿@using Microsoft.AspNetCore.Identity
+@using PostAds.Models
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{ 
+    bool roleAdmin = false;
+    bool roleUser = false;
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    var user = await UserManager.GetUserAsync(User);
+    var role = await UserManager.IsInRoleAsync(user, "Admin");
+    var roleUserGet = await UserManager.IsInRoleAsync(user, "User");
+    roleAdmin = role;
+    roleUser = roleUserGet;
+}
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - VistasPostAdd</title>
+        <environment include="Development">
+            <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+            <link rel="stylesheet" href="~/css/node_modules/font-awesome/css/font-awesome.min.css">
+            <link rel="stylesheet" href="~/css/main.css" />
+        </environment>
+        <environment exclude="Development">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+                  asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+                  asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link rel="stylesheet" href="~/css/main.min.css" asp-append-version="true" />
+        </environment>
+    </head>
+    <body>
+        <nav id="nav-menu">
+            <a asp-action="Index" asp-controller="Home" id="nav-logo"><img src="~/images/logo.png" alt="PostAdd"></a>
+            <div id="menu">
                 <ul>
-                    <li><a href="#">Hogar</a></li>
-                    <li><a href="#">Vehículos</a></li>
-                    <li><a href="#">Moda y Belleza</a></li>
-                    <li><a href="#">Derpotes y Entretenimiento</a></li>
-                    <li><a href="#">Electrónica</a></li>
-                    <li><a href="#">Negocios y servicios</a></li>
-                    <li><a href="#">Otros</a></li>
+                    <li><a asp-action="Index" asp-controller="Home">Inicio</a></li>
+                    @if (roleAdmin != true && roleUser == true)
+                    {
+
+                    <li><a asp-action="Index" asp-controller="Publicar">Publicar</a></li>
+                    }
+                    @await Html.PartialAsync("_LoginPartial")
                 </ul>
-                <a href="#"><img src="" alt=""></a>
-                <a href="#"><img src="" alt=""></a>
             </div>
-            <p>PostAdd 2018 - Copyright &copy; Todos los derechos reservados.</p>
-        </footer>
-    </div>
+        </nav>
+        <div class="container-fluid body-content">
+            @RenderBody()
+            <footer>
+                <div class="f-menu">
+                    <ul>
+                        <li><a href="#">Hogar</a></li>
+                        <li><a href="#">Vehículos</a></li>
+                        <li><a href="#">Moda y Belleza</a></li>
+                        <li><a href="#">Derpotes y Entretenimiento</a></li>
+                        <li><a href="#">Electrónica</a></li>
+                        <li><a href="#">Negocios y servicios</a></li>
+                        <li><a href="#">Otros</a></li>
+                    </ul>
+                    <a href="#"><img src="" alt=""></a>
+                    <a href="#"><img src="" alt=""></a>
+                </div>
+                <p>PostAdd 2018 - Copyright &copy; Todos los derechos reservados.</p>
+            </footer>
+        </div>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/engine.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+        <environment include="Development">
+            <script src="~/lib/jquery/dist/jquery.js"></script>
+            <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+            <script src="~/js/engine.js" asp-append-version="true"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+            </script>
+            <script src="~/js/site.min.js" asp-append-version="true"></script>
+        </environment>
 
-    @RenderSection("Scripts", required: false)
-</body>
+        @RenderSection("Scripts", required: false)
+    </body>
 </html>

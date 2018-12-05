@@ -7,8 +7,10 @@
 @if (SignInManager.IsSignedIn(User))
 {
     var user = await UserManager.GetUserAsync(User);
+    var role = await UserManager.IsInRoleAsync(user, "Admin");
+    var roleAdd = role == true ? "Administrador" : "Usuario";
     <li>
-        <a asp-area="" asp-controller="Administrador" asp-action="Index" title="Manage">Hello @user.Nombre @user.Apellido!</a>
+        <a asp-area="" asp-controller="@roleAdd" asp-action="Index" title="Manage">Hello @user.Nombre @user.Apellido!</a>
     </li>
     <li>
         <a href="#" id="btn-logout">Logout</a>

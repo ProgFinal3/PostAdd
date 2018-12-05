@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -13,6 +14,7 @@ using VistasPostAdd.Models;
 
 namespace VistasPostAdd.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdministradorController : Controller
     {
         private readonly AppDbContex dbContex;

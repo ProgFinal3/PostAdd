@@ -13,10 +13,12 @@ namespace VistasPostAdd.Controllers
     public class RegistroController : Controller
     {
         private readonly UserManager<AppUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public RegistroController(UserManager<AppUser> userManager)
+        public RegistroController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
+            this.roleManager = roleManager;
         }
         
         // GET: Registro
@@ -55,6 +57,22 @@ namespace VistasPostAdd.Controllers
                 var CreateUser = await userManager.CreateAsync(user, model.Password);
                 if (CreateUser.Succeeded)
                 {
+                    var roleExist = await roleManager.RoleExistsAsync("User");
+
+                    if (roleExist)
+                    {
+                        var userRole = await userManager.FindByEmailAsync(user.Email);
+                        await userManager.AddToRoleAsync(userRole, "User");
+                    }
+                    else
+                    {
+                        var roleCreate = await roleManager.CreateAsync(new IdentityRole("User"));
+                        if (roleCreate.Succeeded)
+                        {
+                            var userRole = await userManager.FindByEmailAsync(user.Email);
+                            await userManager.AddToRoleAsync(userRole, "User");
+                        }
+                    }
                     return RedirectToAction("Index", "Login");
                 }
 
