@@ -22,22 +22,22 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="contador">
-                                <span><i class="fa fa-user"></i>@Model.Count()</span>
+                                <span><i class="fa fa-user"></i> @Model.Count()</span>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="contador">
-                                <span><i class="fa fa-plus-circle"></i>@dbContext.Anuncio.Count()</span>
+                                <span><i class="fa fa-plus-circle"></i> @dbContext.Anuncio.Count()</span>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="contador">
-                                <span><i class="fa fa-user"></i> <i class="fa fa-lock"></i>@Model.Where(x => x.Bloqueado == true).Count()</span>
+                                <span><i class="fa fa-user"></i> <i class="fa fa-lock"></i> @Model.Where(x => x.Bloqueado == true).Count()</span>
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="contador">
-                                <span><i class="fa fa-plus-circle"></i> <i class="fa fa-lock"></i>@dbContext.Anuncio.Where(x => x.Bloqueado == true).Count()</span>
+                                <span><i class="fa fa-plus-circle"></i> <i class="fa fa-lock"></i> @dbContext.Anuncio.Where(x => x.Bloqueado == true).Count()</span>
                             </div>
                         </div>
                     </div>
@@ -45,13 +45,14 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="ads-blocked">
-                                <span>Anuncios</span>
+                                <span>Anuncios bloqueados</span>
                                 <div class="pre-scrollable" style="height:150px">
                                     <table class="table">
                                         <tr>
                                             <th>Id</th>
                                             <th>Poster</th>
                                             <th>Titulo</th>
+                                            <th>Precio</th>
                                         </tr>
                                         @foreach (var item in dbContext.Anuncio.Where(x => x.Bloqueado == false).ToList())
                                         {
@@ -60,8 +61,8 @@
                                             <td>@item.Id</td>
                                             <td>@poster.Nombre</td>
                                             <td>@item.Titulo</td>
+                                            <td>@item.PrecioVenta</td>
                                         </tr>
-
                                         }
                                     </table>
                                 </div> 
@@ -71,7 +72,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="user-blocked">
-                                <span>Usuarios</span>
+                                <span>Usuarios bloqueados</span>
                                  <div class="pre-scrollable" style="height:150px">
                                      <table class="table">
                                          <tr>
