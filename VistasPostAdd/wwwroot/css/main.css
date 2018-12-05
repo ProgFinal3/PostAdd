@@ -484,3 +484,11 @@ span[id$="-error"], span .field-validation-error {
     color: rgba(0,0,0,.7);
     font-size: 1.2em;
 }
+#add-categ {
+    margin: 2%;
+    display: block;
+    width: 40%;
+    padding: 1%;
+    border: 1px rgba(0,0,0,.2) solid;
+    border-radius: 3px;
+}
